@@ -7,7 +7,7 @@ export const Sidebar = () => {
       id="sidebar"
       className="absolute top-40 bg-white w-screen flex justify-center"
     >
-      <div className="w-60 border flex flex-col pb-4">
+      <div className="w-64 border flex flex-col pb-4 rounded-md">
         <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">
           All Boards (4)
         </p>

@@ -11,3 +11,9 @@
     }
 
 }
+
+@layer utilities {
+    .activeSwitch::after{
+            @apply !left-[1.6rem]
+        }
+}
