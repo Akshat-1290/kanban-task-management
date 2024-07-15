@@ -1,7 +1,8 @@
+import boards from "../lib/data";
 import { type BoardAction, type BoardState } from "../lib/types";
 
 export const initialState : BoardState = {
- boards :[]
+ boards : boards
 };
 
 

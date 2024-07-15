@@ -1,35 +1,35 @@
-export type Column  ={
+export type SubTasks = {
     id: string;
-    name: string;
-    boardId : string
-    tasks : Tasks[]
-  }
-
-  export type Tasks =  {
-    id: string;
+    taskId : string
     title: string;
-    columnId: string;
+    isCompleted: boolean;
+  };
+
+  export type Tasks = {
+    id: string;
+    columnId : string
+    title: string;
     description: string;
     status: string;
-    subTasks : SubTasks[]
-  }
+    subtasks: SubTasks[];
+  };
 
-  export type SubTasks =  {
+  export type Column = {
     id: string;
-    title: string;
-    taskId: string;
-    isCompleted: boolean;
-  }
+    boardId: string;
+    name: string;
+    tasks: Tasks[];
+  };
 
-  export type Board =  {
+  export type Board = {
     id: string;
     name: string;
-    columns: Column[]
-  }
+    columns: Column[];
+  };
 
+  export type BoardState = {
+    boards: Board[];
 
-export type BoardState =  {
-   boards : Board[]
   }
   export type BoardAction =
   | { type: 'SET_INITIAL_STATE'; payload: BoardState }
