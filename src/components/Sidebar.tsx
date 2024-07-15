@@ -5,7 +5,7 @@ export const Sidebar = () => {
   return (
     <section
       id="sidebar"
-      className="absolute top-40 bg-white w-screen flex justify-center"
+      className="absolute -top-full invisible bg-white w-screen flex justify-center"
     >
       <div className="w-64 border flex flex-col pb-4 rounded-md">
         <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">

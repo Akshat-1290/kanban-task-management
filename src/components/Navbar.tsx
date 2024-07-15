@@ -11,9 +11,9 @@ export const Navbar = () => {
             </Link>
           </div>
           <div className="flex grow ml-5">
-            <div className="flex items-center gap-1">
-              <p className="font-bold text-lg ">Platform Launch</p>
-              <button type="button">
+            <div className="flex items-center gap-1 relative">
+              <p className="font-bold text-lg">Platform Launch</p>
+              <button type="button" className="before:absolute before:inset-0">
                 <img src="/icon-chevron-down.svg" alt="down arrow" />
               </button>
             </div>
