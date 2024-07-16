@@ -1,18 +1,21 @@
-import React from 'react'
-import { createBrowserRouter , RouterProvider } from 'react-router-dom'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BoardProvider } from "./context/BoardContext";
+import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path : "/",
-    element : <App/>,
-  }
-])
+    path: "/",
+    element: <App />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
-  </React.StrictMode>,
-)
+    <BoardProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </BoardProvider>
+  </React.StrictMode>
+);
