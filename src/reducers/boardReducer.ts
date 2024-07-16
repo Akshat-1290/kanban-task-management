@@ -1,8 +1,7 @@
-import boards from "../lib/data";
 import { type BoardAction, type BoardState } from "../lib/types";
 
 export const initialState : BoardState = {
- boards : boards
+ boards : []
 };
 
 
@@ -11,21 +10,20 @@ export const reducer = (state : BoardState , action : BoardAction)=> {
     switch (action.type) {
         case 'SET_INITIAL_STATE':
           newState = action.payload;
-          break;
-
+          return newState
         case 'ADD_BOARD':
           newState = {
             ...state,
             boards: [...state.boards, action.payload]
           };
-          break;
+          return newState
 
         case 'REMOVE_BOARD':
           newState = {
             ...state,
             boards: state.boards.filter(board => board.id !== action.payload)
           };
-          break;
+          return newState
 
         case 'UPDATE_BOARD':
           newState = {
@@ -34,7 +32,7 @@ export const reducer = (state : BoardState , action : BoardAction)=> {
               board.id === action.payload.id ? action.payload : board
             )
           };
-          break;
+          return newState
 
         case 'ADD_TASK':
           newState = {
@@ -55,7 +53,7 @@ export const reducer = (state : BoardState , action : BoardAction)=> {
                 : board
             )
           };
-          break;
+          return newState
 
         case 'REMOVE_TASK':
           newState = {
@@ -76,9 +74,8 @@ export const reducer = (state : BoardState , action : BoardAction)=> {
                 : board
             )
           };
-          break;
-
+          return newState
         default:
-          return newState;
+          return state;
         }
 };

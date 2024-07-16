@@ -1,14 +1,16 @@
-import { Navbar } from "./components/Navbar"
-import { Sidebar } from "./components/Sidebar"
+import { Navbar } from "./components/Navbar";
+import { Sidebar } from "./components/Sidebar";
+import { BoardProvider } from "./context/BoardContext";
 
 function App() {
-
   return (
     <>
-<Navbar/>
-<Sidebar/>
+      <BoardProvider>
+        <Navbar />
+        <Sidebar />
+      </BoardProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
