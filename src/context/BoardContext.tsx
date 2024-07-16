@@ -1,8 +1,9 @@
-import { createContext, useReducer, type FC, type ReactNode } from "react";
-import { initialState , reducer } from "../reducers/boardReducer";
+import { createContext} from "react";
+import { initialState } from "../reducers/boardReducer";
 import type { BoardAction, BoardState } from "../lib/types";
 
-const BoardContext = createContext<{
+
+export const BoardContext = createContext<{
   state: BoardState;
   dispatch: React.Dispatch<BoardAction>;
 }>({
@@ -10,19 +11,6 @@ const BoardContext = createContext<{
   dispatch: () => null,
 });
 
-interface BoardProviderProps {
-  children : ReactNode
-}
-
-const BoardProvider : FC<BoardProviderProps> = ({children}) => {
-  const [state , dispatch] = useReducer(reducer , initialState);
-
-  return (
-      <BoardContext.Provider value={{state , dispatch}}>
-          {children}
-      </BoardContext.Provider>
-  )
-}
 
 
-export {BoardContext , BoardProvider}
+
