@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BoardProvider } from "./provider/BoardProvider";
 import "./index.css";
+import { SettingsProvider } from "./provider/SettingsProvider";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BoardProvider>
-      <RouterProvider router={router}></RouterProvider>
+      <SettingsProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </SettingsProvider>
     </BoardProvider>
   </React.StrictMode>
 );

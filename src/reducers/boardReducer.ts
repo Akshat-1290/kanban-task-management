@@ -1,11 +1,11 @@
-import { type BoardAction, type BoardState } from "../lib/types";
+import type {  BoardAction ,  BoardState } from "../lib/types";
 
 export const initialState : BoardState = {
  boards : []
 };
 
 
-export const reducer = (state : BoardState , action : BoardAction)=> {
+export const reducer = (state : BoardState , action : BoardAction) :BoardState => {
     let newState;
     switch (action.type) {
         case 'SET_INITIAL_STATE':

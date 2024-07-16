@@ -53,3 +53,15 @@ export type SubTasks = {
       };
     };
 
+
+export type SettingsType = {
+  darkMode : boolean,
+  isMobileSidebarOpen : boolean,
+  isSidebarOpen : boolean,
+  lastActivatedBoard : string
+}
+
+export type SettingsAction = {
+  type : "TOGGLE_DARK_MODE" | "TOGGLE_MOBILE_SIDEBAR" | "TOGGLE_SIDEBAR" | "SET_LAST_ACTIVE_BOARD",
+  payload : string
+}
