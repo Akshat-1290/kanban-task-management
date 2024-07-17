@@ -61,7 +61,8 @@ export type SettingsType = {
   lastActivatedBoard : string
 }
 
-export type SettingsAction = {
-  type : "TOGGLE_DARK_MODE" | "TOGGLE_MOBILE_SIDEBAR" | "TOGGLE_SIDEBAR" | "SET_LAST_ACTIVE_BOARD",
-  payload : string
-}
+export type SettingsAction =
+| { type: 'TOGGLE_DARK_MODE'}
+| { type: 'TOGGLE_MOBILE_SIDEBAR'}
+| { type: 'TOGGLE_SIDEBAR'}
+| { type: 'SET_LAST_ACTIVE_BOARD'; payload: string}

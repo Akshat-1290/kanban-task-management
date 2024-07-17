@@ -1,9 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { SettingsContext } from "../context/SettingsContext";
 
 export const Navbar = () => {
+  const {dispatch} = useContext(SettingsContext)
+
+  const toggleMobileSidebar = () => {
+    dispatch({type : "TOGGLE_MOBILE_SIDEBAR"})
+  }
+
   return (
     <>
-      <section id="navbar" className="p-4 sm:p-0 sm:border-b sm:border-200">
+      <section id="navbar" className="p-4 bg-white sm:p-0 sm:border-b sm:border-200 relative z-20">
         <nav className="flex items-center">
           <div className="logo">
             <Link to={"/"}>
@@ -14,7 +22,7 @@ export const Navbar = () => {
           <div className="flex grow ml-5 sm:p-5 sm:ml-0">
             <div className="flex items-center gap-1 relative">
               <p className="font-bold text-xl">Platform Launch</p>
-              <button type="button" className="before:absolute before:inset-0 sm:hidden">
+              <button type="button" className="before:absolute before:inset-0 sm:hidden" onClick={()=>{toggleMobileSidebar()}}>
                 <img src="/icon-chevron-down.svg" alt="down arrow" />
               </button>
             </div>
