@@ -11,6 +11,9 @@ export default {
       fontFamily: {
         sans: ["Plus Jakarta Sans", ...defaultTheme.fontFamily.sans],
       },
+      height : {
+        'calc-100vh-minus-5rem': 'calc(100vh - 5rem)',
+      }
     },
   },
   plugins: [],
