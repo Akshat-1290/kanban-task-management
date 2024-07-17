@@ -9,7 +9,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <>
-      <div className="theme-switcher flex justify-center sm:absolute sm:w-full sm:bottom-20">
+      <div className="theme-switcher flex justify-center sm:mt-auto sm:w-full sm:bottom-20">
         <div className="flex w-11/12 justify-evenly items-center mt-5 bg-blue-100 py-3 rounded-md">
           <img src="/icon-light-theme.svg" alt="sun" className="cursor-pointer" />
           <button

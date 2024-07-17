@@ -18,7 +18,7 @@ export const Sidebar = () => {
       ref={sidebarRef}
     >
       <div
-        className="w-64 h-fit sm:h-full border flex flex-col pb-4 rounded-md bg-white sm:relative mt-7 sm:mt-0"
+        className="w-64 h-fit sm:h-full border border-blue-200 flex flex-col pb-4 rounded-md sm:rounded-none bg-white sm:relative mt-7 sm:mt-0 sm:overflow-auto"
         tabIndex={1}
       >
         <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">
@@ -63,7 +63,7 @@ export const Sidebar = () => {
         <ThemeSwitcher />
         <button
           type="button"
-          className="hidden sm:flex font-bold text-neutral-400 absolute bottom-7 w-full justify-center items-center gap-3"
+          className="hidden sm:flex font-bold text-neutral-400 mt-10 bottom-7 w-full justify-center items-center gap-3"
         >
           <svg width="18" height="16" xmlns="http://www.w3.org/2000/svg">
             <path
