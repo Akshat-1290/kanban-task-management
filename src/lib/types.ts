@@ -66,3 +66,4 @@ export type SettingsAction =
 | { type: 'SET_MOBILE_SIDEBAR' , payload : boolean | null}
 | { type: 'SET_SIDEBAR' , payload : boolean | null}
 | { type: 'SET_LAST_ACTIVE_BOARD'; payload: string}
+
