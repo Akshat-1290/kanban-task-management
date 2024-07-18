@@ -21,8 +21,8 @@ export const Sidebar = () => {
       } else {
         sidebar.classList.remove("activeMobileSidebar");
         isSidebarOpen
-          ? sidebar.classList.remove("hideSidebar")
-          : sidebar.classList.add("hideSidebar");
+          ? sidebar.classList.add("showSidebar")
+          : sidebar.classList.remove("showSidebar");
       }
     }
   }, [isSmallDevice, isMobileSidebarOpen, isSidebarOpen]);
@@ -31,11 +31,17 @@ export const Sidebar = () => {
     updateSidebarState();
   }, [updateSidebarState]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      sidebarRef.current?.classList.add("!flex");
+    }, 1);
+  }, []);
+
   return (
     <>
       <section
         id="sidebar"
-        className="fixed sm:absolute -top-full sm:top-20 sm:left-0 invisible sm:visible bg-transparent z-10 w-full sm:w-fit flex justify-center  h-calc-100vh-minus-5rem transition-mobileSidebar duration-mobileSidebar sm:transition-sidebar sm:duration-sidebar  "
+        className="hidden fixed sm:absolute -top-full sm:top-20 sm:-left-full invisible  bg-transparent z-10 w-full sm:w-fit justify-center h-calc-100vh-minus-5rem transition-all duration-300"
         ref={sidebarRef}
       >
         <div
@@ -97,7 +103,13 @@ export const Sidebar = () => {
           </button>
         </div>
       </section>
-        <span className="bg-red-500 ml-80" onClick={() =>{dispatch({type : "SET_SIDEBAR" , payload: true})}}>Opennn</span>
+      <button
+        type="button"
+        className="hidden bg-purple-500 absolute bottom-7 w-16 h-12 rounded-tr-full rounded-br-full sm:flex justify-center items-center hover:bg-purple-400"
+        onClick={() => dispatch({ type: "SET_SIDEBAR", payload: true })}
+      >
+        <img src="/icon-show-sidebar.svg" alt="Show Sidebar" className="h-3" />
+      </button>
     </>
   );
 };
