@@ -62,14 +62,14 @@ export const Sidebar = () => {
           <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">
             All Boards ({boards.length})
           </p>
-          <ul className="flex flex-col gap-5 mt-2">
+          <ul className="flex flex-col mt-2">
             {boardsMeta.map(({ name, id }) => {
               return <BoardLink key={id} boardName={name} boardId={id} />;
             })}
             <li>
               <Link
                 to={""}
-                className="pl-5 flex gap-4 items-center text-purple-500 font-medium "
+                className="pl-5 mt-4 flex gap-4 items-center text-purple-500 font-medium "
               >
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -77,7 +77,7 @@ export const Sidebar = () => {
                     fill="currentColor"
                   ></path>
                 </svg>
-                <p>Create New Board</p>
+                <p>+ Create New Board</p>
               </Link>
             </li>
           </ul>
