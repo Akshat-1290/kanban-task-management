@@ -6,7 +6,7 @@ export const Navbar = () => {
   const { dispatch } = useContext(SettingsContext);
 
   const toggleMobileSidebar = () => {
-    dispatch({ type: "TOGGLE_MOBILE_SIDEBAR" });
+    dispatch({ type: "SET_MOBILE_SIDEBAR"  , payload : null});
   };
 
   return (

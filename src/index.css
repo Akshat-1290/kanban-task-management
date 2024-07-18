@@ -16,6 +16,9 @@
     .activeMobileSidebar{
         @apply !visible !top-20 !bg-black bg-opacity-20
     }
+    .hideSidebar{
+        @apply !-left-full !invisible
+     }
 }
 
 @layer utilities {
