@@ -1,11 +1,19 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { SettingsContext } from "../context/SettingsContext";
 
 type BoardLinkProps = {
   boardName: string;
   boardId: string;
+  isSmallDevice: boolean;
 };
 
-export const BoardLink = ({boardName, boardId }: BoardLinkProps) => {
+export const BoardLink = ({
+  boardName,
+  boardId,
+  isSmallDevice,
+}: BoardLinkProps) => {
+  const { dispatch } = useContext(SettingsContext);
   return (
     <>
       <li className=" mr-4 ">
@@ -18,6 +26,10 @@ export const BoardLink = ({boardName, boardId }: BoardLinkProps) => {
                 : "bg-transparent text-neutral-600"
             }`
           }
+          onClick={() => {
+            isSmallDevice &&
+              dispatch({ type: "SET_MOBILE_SIDEBAR", payload: false });
+          }}
         >
           <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
             <path
