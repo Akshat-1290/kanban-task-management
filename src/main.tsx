@@ -10,17 +10,21 @@ import { BoardProvider } from "./provider/BoardProvider";
 import "./index.css";
 import { SettingsProvider } from "./provider/SettingsProvider";
 import localforage from "localforage";
+import { Board } from "./components/Board";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <App />,
     children: [
       {
-        index : true,
+        index: true,
         loader: async () => {
-          const lastActiveBoardId = await localforage.getItem("lastActiveBoardId");
+          const lastActiveBoardId = await localforage.getItem(
+            "lastActiveBoardId"
+          );
           if (lastActiveBoardId) {
-          return redirect(`/boards/${lastActiveBoardId}`);
+            return redirect(`/boards/${lastActiveBoardId}`);
           } else {
             return redirect("/boards");
           }
@@ -28,11 +32,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/boards/:boardId",
-        element: <App />,
+        element: <Board />,
       },
       {
         path: "/boards",
-        element: <App />,
+        element: <Board />,
       },
     ],
   },
