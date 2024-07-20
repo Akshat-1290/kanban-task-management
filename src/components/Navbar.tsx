@@ -1,8 +1,14 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext , useMemo } from "react";
+import { Link, useParams } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
+import { BoardContext } from "../context/BoardContext";
 
 export const Navbar = () => {
+  const {boardId} = useParams()
+  const{state : {boards}} = useContext(BoardContext)
+  const activeBoard = useMemo(() => {
+    return boards.find((board) => board.id === boardId);
+  }, [boards, boardId]);
   const {
     state: { isSidebarOpen },
     dispatch: settingsDispatch,
@@ -29,15 +35,15 @@ export const Navbar = () => {
               <img
                 src="/logo-dark.svg"
                 alt="Mobile Logo"
-                className={`hidden sm:block p-5 sm:pr-[${
-                  isSidebarOpen ? "5.15rem" : "1.15rem"
-                }] `}
+                className={`hidden sm:block p-5 ${
+                  isSidebarOpen ? "sm:pr-[5.15rem]" : "sm:pr-[1.15rem]"
+                } `}
               />
             </Link>
           </div>
           <div className="flex grow ml-5 sm:p-5 sm:ml-0">
             <div className="flex items-center gap-1 relative">
-              <p className="font-bold text-xl">Platform Launch</p>
+              <p className="font-bold text-xl">{activeBoard?.name}</p>
               <button
                 type="button"
                 className="before:absolute before:inset-0 sm:hidden"

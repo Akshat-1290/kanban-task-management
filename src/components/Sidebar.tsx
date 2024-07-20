@@ -51,7 +51,7 @@ export const Sidebar = () => {
     <>
       <section
         id="sidebar"
-        className="hidden fixed sm:absolute -top-full sm:top-20 sm:-left-full invisible  bg-transparent z-10 w-full sm:w-fit justify-center h-calc-100vh-minus-5rem transition-all duration-200"
+        className="hidden fixed sm:absolute -top-full sm:top-20 sm:-left-full invisible  bg-transparent z-10 w-full sm:w-fit justify-center h-screen sm:h-calc-100vh-minus-5rem transition-all duration-200"
         ref={sidebarRef}
       >
         <div
