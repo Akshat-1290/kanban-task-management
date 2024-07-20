@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
 
 export const Navbar = () => {
-  const { dispatch } = useContext(SettingsContext);
+  const {
+    state: { isSidebarOpen },
+    dispatch: settingsDispatch,
+  } = useContext(SettingsContext);
 
   const toggleMobileSidebar = () => {
-    dispatch({ type: "SET_MOBILE_SIDEBAR"  , payload : null});
+    settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: null });
   };
 
   return (
@@ -26,7 +29,9 @@ export const Navbar = () => {
               <img
                 src="/logo-dark.svg"
                 alt="Mobile Logo"
-                className="hidden sm:block p-5 sm:pr-[5.15rem]  "
+                className={`hidden sm:block p-5 sm:pr-[${
+                  isSidebarOpen ? "5.15rem" : "1.15rem"
+                }] `}
               />
             </Link>
           </div>
