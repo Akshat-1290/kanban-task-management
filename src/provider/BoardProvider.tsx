@@ -44,3 +44,4 @@ export const BoardProvider: FC<BoardProviderProps> = ({ children }) => {
         </BoardContext.Provider>
     );
 };
+

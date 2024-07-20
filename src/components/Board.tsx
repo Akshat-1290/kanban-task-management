@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { WelcomeBoard } from "./WelcomeBoard";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { SettingsContext } from "../context/SettingsContext";
 import localforage from "localforage";
 import { BoardContext } from "../context/BoardContext";
+import { BoardColumns } from "./BoardColumns";
 
 export const Board = () => {
   const { boardId } = useParams();
@@ -14,6 +15,9 @@ export const Board = () => {
     state: { boards },
   } = useContext(BoardContext);
   const firstBoardId = boards[0]?.id;
+  const activeBoard = useMemo(() => {
+    return boards.find((board) => board.id === boardId);
+  }, [boards, boardId]);
   useEffect(() => {
     const updateLastActiveBoard = async () => {
       const storedBoardId = await localforage.getItem("lastActiveBoardId");
@@ -32,14 +36,17 @@ export const Board = () => {
     <>
       <section
         id="boards"
-        className={`h-calc-100vh-minus-5rem overflow-auto ${
+        className={`h-screen overflow-scroll bg-blue-50 ${
           isSidebarOpen ? "sm:ml-64" : "sm:ml-0"
         }`}
       >
-        <div className="mx-4 my-5">
-          {boardId ? "" : <WelcomeBoard firstBoardId={firstBoardId!} />}
+        <div className="mx-4">
+          {boardId
+            ? activeBoard && <BoardColumns columns={activeBoard.columns} />
+            : firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />}
         </div>
       </section>
     </>
   );
 };
+

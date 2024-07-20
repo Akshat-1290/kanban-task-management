@@ -33,6 +33,9 @@ const router = createBrowserRouter([
       {
         path: "/boards/:boardId",
         element: <Board />,
+        loader : async ({params}) => {
+          return params.boardId
+        }
       },
       {
         path: "/boards",
