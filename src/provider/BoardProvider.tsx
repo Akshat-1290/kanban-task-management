@@ -34,6 +34,10 @@ export const BoardProvider: FC<BoardProviderProps> = ({ children }) => {
         initializeBoards();
     }, [dispatch]);
 
+    useEffect(() => {
+        localforage.setItem("boards", state.boards);
+    } , [state])
+
     if (!isInitialized) {
         return null;
     }
