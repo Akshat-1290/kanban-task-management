@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { WelcomeBoard } from "./WelcomeBoard";
 import { useContext, useEffect, useMemo } from "react";
 import { SettingsContext } from "../context/SettingsContext";
@@ -46,6 +46,7 @@ export const Board = () => {
             : firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />}
         </div>
       </section>
+      <Outlet/>
     </>
   );
 };

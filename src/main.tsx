@@ -11,11 +11,15 @@ import "./index.css";
 import { SettingsProvider } from "./provider/SettingsProvider";
 import localforage from "localforage";
 import { Board } from "./components/Board";
+import { CreateBoardModal } from "./ModalComponents/CreateBoardModal";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    loader: async ({ params }) => {
+      return params.boardId || null;
+    },
     children: [
       {
         index: true,
@@ -33,9 +37,16 @@ const router = createBrowserRouter([
       {
         path: "/boards/:boardId",
         element: <Board />,
-        loader : async ({params}) => {
-          return params.boardId
-        }
+        loader: async ({ params }) => {
+          return params.boardId;
+        },
+        children: [
+          {
+            path: "/boards/:boardId/new",
+            element : <CreateBoardModal/>,
+            action : CreateBoardModal.action
+          },
+        ],
       },
       {
         path: "/boards",
