@@ -21,7 +21,6 @@ export const BoardProvider: FC<BoardProviderProps> = ({ children }) => {
                     type: "SET_INITIAL_STATE",
                     payload: {boards : defaultBoards},
                 });
-                await localforage.setItem("boards", defaultBoards);
             } else {
                 dispatch({
                     type: "SET_INITIAL_STATE",

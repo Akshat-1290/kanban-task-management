@@ -58,12 +58,10 @@ export type SettingsType = {
   darkMode : boolean | null,
   isMobileSidebarOpen : boolean ,
   isSidebarOpen : boolean | null,
-  lastActivatedBoard : string
 }
 
 export type SettingsAction =
-| { type: 'SET_DARK_MODE' , payload : boolean | null}
+| { type: 'SET_DARK_MODE'}
 | { type: 'SET_MOBILE_SIDEBAR' , payload : boolean | null}
 | { type: 'SET_SIDEBAR' , payload : boolean | null}
-| { type: 'SET_LAST_ACTIVE_BOARD'; payload: string}
 

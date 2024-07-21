@@ -26,6 +26,15 @@ export const SettingsProvider: FC<SettingsProviderProps> = ({ children }) => {
       );
   }, [state.isSidebarOpen]);
 
+  useEffect(() =>
+    {
+      state.darkMode !== null &&
+      localStorage.setItem(
+        "darkMode",
+        JSON.stringify(state.darkMode)
+      );
+  }, [state.darkMode]);
+
   if (!isInitialized) {
     return null;
 }
