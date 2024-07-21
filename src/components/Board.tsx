@@ -36,11 +36,11 @@ export const Board = () => {
     <>
       <section
         id="boards"
-        className={`h-screen overflow-scroll bg-blue-50 ${
+        className={`h-calc-100vh-minus-6rem  sm:h-calc-100vh-minus-5rem overflow-scroll bg-blue-50 ${
           isSidebarOpen ? "sm:ml-64" : "sm:ml-0"
         }`}
       >
-        <div className="mx-4">
+        <div className="mx-4 pb-10">
           {boardId
             ? activeBoard && <BoardColumns columns={activeBoard.columns} />
             : firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />}
