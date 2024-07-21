@@ -1,13 +1,13 @@
 import { useContext, useMemo } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
 import { BoardContext } from "../context/BoardContext";
 
 export const Navbar = () => {
-  const { boardId } = useParams();
   const {
     state: { boards },
   } = useContext(BoardContext);
+  const boardId = useLoaderData()
   const activeBoard = useMemo(() => {
     return boards.find((board) => board.id === boardId);
   }, [boards, boardId]);

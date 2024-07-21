@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useContext, useEffect, useRef, useCallback } from "react";
 import { SettingsContext } from "../context/SettingsContext";
@@ -20,6 +20,7 @@ export const Sidebar = () => {
     id: board.id,
     name: board.name,
   }));
+  const boardId = useLoaderData() ;
 
   const updateSidebarState = useCallback(() => {
     const sidebar = sidebarRef.current;
@@ -47,6 +48,8 @@ export const Sidebar = () => {
       sidebarRef.current?.classList.add("!flex");
     }, 1);
   }, []);
+
+
 
   return (
     <>
@@ -84,7 +87,7 @@ export const Sidebar = () => {
             })}
             <li className="mr-4">
               <Link
-                to={""}
+                to={`/boards/${boardId}/new`}
                 className="pl-5 flex gap-4 items-center h-12 rounded-tr-full rounded-br-full text-purple-500 font-medium hover:bg-purple-100 "
                 onClick={() =>
                   settingsDispatch({
