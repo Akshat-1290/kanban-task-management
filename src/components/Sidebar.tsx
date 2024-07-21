@@ -10,10 +10,11 @@ export const Sidebar = () => {
   const { state: settingsState, dispatch: settingsDispatch } =
     useContext(SettingsContext);
   const {
-    state: { boards }
+    state: { boards },
   } = useContext(BoardContext);
   const { isMobileSidebarOpen, isSidebarOpen } = settingsState;
   const sidebarRef = useRef<HTMLElement | null>(null);
+  const sidebarContentRef = useRef<HTMLDivElement | null>(null);
   const isSmallDevice = useMediaQuery("(max-width: 639px)");
   const boardsMeta = boards.map((board) => ({
     id: board.id,
@@ -55,20 +56,42 @@ export const Sidebar = () => {
         ref={sidebarRef}
       >
         <div
+          className={`${
+            isMobileSidebarOpen ? "block" : "hidden"
+          } fixed sm:hidden sidebar-bg w-full h-full bg-black bg-opacity-20 -z-10 top-16`}
+          onClick={() => {
+            settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: false });
+          }}
+        ></div>
+        <div
           className="w-64 h-fit sm:h-full border border-blue-200 flex flex-col pb-4 rounded-md sm:rounded-none bg-white sm:relative mt-7 sm:mt-0 sm:overflow-auto"
           tabIndex={1}
+          ref={sidebarContentRef}
         >
           <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">
             All Boards ({boards.length})
           </p>
           <ul className="flex flex-col mt-2">
             {boardsMeta.map(({ name, id }) => {
-              return <BoardLink key={id} boardName={name} boardId={id} isSmallDevice={isSmallDevice} />;
+              return (
+                <BoardLink
+                  key={id}
+                  boardName={name}
+                  boardId={id}
+                  isSmallDevice={isSmallDevice}
+                />
+              );
             })}
             <li className="mr-4">
               <Link
                 to={""}
                 className="pl-5 flex gap-4 items-center h-12 rounded-tr-full rounded-br-full text-purple-500 font-medium hover:bg-purple-100 "
+                onClick={() =>
+                  settingsDispatch({
+                    type: "SET_MOBILE_SIDEBAR",
+                    payload: false,
+                  })
+                }
               >
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -83,6 +106,12 @@ export const Sidebar = () => {
               <Link
                 to={"/boards"}
                 className="pl-5 flex gap-4 items-center h-12 rounded-tr-full rounded-br-full text-purple-500 font-medium hover:bg-purple-100"
+                onClick={() =>
+                  settingsDispatch({
+                    type: "SET_MOBILE_SIDEBAR",
+                    payload: false,
+                  })
+                }
               >
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                   <path
