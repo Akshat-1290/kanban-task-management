@@ -1,22 +1,25 @@
-import { useContext , useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
 import { BoardContext } from "../context/BoardContext";
 
 export const Navbar = () => {
-  const {boardId} = useParams()
-  const{state : {boards}} = useContext(BoardContext)
+  const { boardId } = useParams();
+  const {
+    state: { boards },
+  } = useContext(BoardContext);
   const activeBoard = useMemo(() => {
     return boards.find((board) => board.id === boardId);
   }, [boards, boardId]);
   const {
-    state: { isSidebarOpen },
+    state: { isSidebarOpen, isMobileSidebarOpen },
     dispatch: settingsDispatch,
   } = useContext(SettingsContext);
 
   const toggleMobileSidebar = () => {
     settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: null });
   };
+
 
   return (
     <>
@@ -43,7 +46,9 @@ export const Navbar = () => {
           </div>
           <div className="flex grow ml-5 sm:p-5 sm:ml-0">
             <div className="flex items-center gap-1 relative">
-              <p className="font-bold text-xl">{activeBoard?.name}</p>
+              <p className="font-bold text-xl">
+                {activeBoard?.name || "Kanban"}
+              </p>
               <button
                 type="button"
                 className="before:absolute before:inset-0 sm:hidden"
@@ -51,7 +56,11 @@ export const Navbar = () => {
                   toggleMobileSidebar();
                 }}
               >
-                <img src="/icon-chevron-down.svg" alt="down arrow" />
+                {isMobileSidebarOpen ? (
+                  <img src={`/icon-chevron-up.svg`} alt="Up arrow" />
+                ) : (
+                  <img src={`/icon-chevron-down.svg`} alt="down arrow" />
+                )}
               </button>
             </div>
             <div className="ml-auto flex gap-5">
