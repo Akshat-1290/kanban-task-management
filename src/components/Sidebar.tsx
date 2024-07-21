@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { useContext, useEffect, useRef, useCallback } from "react";
 import { SettingsContext } from "../context/SettingsContext";
@@ -20,7 +20,7 @@ export const Sidebar = () => {
     id: board.id,
     name: board.name,
   }));
-  const boardId = useLoaderData() ;
+  const boardId = useParams().boardId ;
 
   const updateSidebarState = useCallback(() => {
     const sidebar = sidebarRef.current;

@@ -1,13 +1,14 @@
-import { useContext, useMemo } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
 import { BoardContext } from "../context/BoardContext";
+import { MoreModal } from "./MoreModal";
 
 export const Navbar = () => {
   const {
     state: { boards },
   } = useContext(BoardContext);
-  const boardId = useLoaderData()
+  const boardId = useParams().boardId;
   const activeBoard = useMemo(() => {
     return boards.find((board) => board.id === boardId);
   }, [boards, boardId]);
@@ -20,6 +21,7 @@ export const Navbar = () => {
     settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: null });
   };
 
+  const [moreModalOpen, setMoreModalOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -71,9 +73,13 @@ export const Navbar = () => {
                 <img src="/icon-add-task-mobile.svg" alt="Add Task" />
                 <span className="hidden sm:inline">Add New Task</span>
               </Link>
-              <button type="button">
-                <img src="/icon-vertical-ellipsis.svg" alt="" />
+              <button
+                type="button"
+                onClick={() => setMoreModalOpen(!moreModalOpen)}
+              >
+                <img src="/icon-vertical-ellipsis.svg" alt="More" />
               </button>
+              {moreModalOpen && <MoreModal setMoreModalOpen={setMoreModalOpen}/>}
             </div>
           </div>
         </nav>

@@ -17,9 +17,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    loader: async ({ params }) => {
-      return params.boardId || null;
-    },
     children: [
       {
         index: true,
