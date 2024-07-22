@@ -5,6 +5,7 @@ import { SettingsContext } from "../context/SettingsContext";
 import localforage from "localforage";
 import { BoardContext } from "../context/BoardContext";
 import { BoardColumns } from "./BoardColumns";
+import { EmptyBoard } from "./EmptyBoard";
 
 export const Board = () => {
   const { boardId } = useParams();
@@ -41,9 +42,15 @@ export const Board = () => {
         }`}
       >
         <div className="mx-4 pb-10">
-          {boardId
-            ? activeBoard && <BoardColumns columns={activeBoard.columns} />
-            : firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />}
+          {boardId ? (
+            activeBoard && activeBoard?.columns.length > 0 ? (
+              <BoardColumns columns={activeBoard.columns} />
+            ) : (
+              <EmptyBoard boardId={boardId} />
+            )
+          ) : (
+            firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />
+          )}
         </div>
       </section>
       <Outlet />
