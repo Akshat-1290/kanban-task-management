@@ -20,7 +20,7 @@ export const Sidebar = () => {
     id: board.id,
     name: board.name,
   }));
-  const boardId = useParams().boardId ;
+  const boardId = useParams().boardId;
 
   const updateSidebarState = useCallback(() => {
     const sidebar = sidebarRef.current;
@@ -49,32 +49,30 @@ export const Sidebar = () => {
     }, 1);
   }, []);
 
-
-
   return (
     <>
       <section
         id="sidebar"
-        className="hidden fixed sm:absolute -top-full sm:top-20 sm:-left-full invisible  bg-transparent z-10 w-full sm:w-fit justify-center h-screen sm:h-calc-100vh-minus-5rem transition-all duration-200"
+        className="invisible fixed -top-full z-10 hidden h-screen w-full justify-center bg-transparent transition-all duration-200 sm:absolute sm:-left-full sm:top-20 sm:h-calc-100vh-minus-5rem sm:w-fit"
         ref={sidebarRef}
       >
         <div
           className={`${
             isMobileSidebarOpen ? "block" : "hidden"
-          } fixed sm:hidden sidebar-bg w-full h-full bg-black bg-opacity-20 -z-10 top-16`}
+          } sidebar-bg fixed top-16 -z-10 h-full w-full bg-black bg-opacity-20 sm:hidden`}
           onClick={() => {
             settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: false });
           }}
         ></div>
         <div
-          className="w-64 h-fit sm:h-full border border-blue-200 flex flex-col pb-4 rounded-md sm:rounded-none bg-white sm:relative mt-7 sm:mt-0 sm:overflow-auto"
+          className="mt-7 flex h-fit w-64 flex-col rounded-md border border-blue-200 bg-white pb-4 sm:relative sm:mt-0 sm:h-full sm:overflow-auto sm:rounded-none"
           tabIndex={1}
           ref={sidebarContentRef}
         >
-          <p className="text-center my-3 font-bold uppercase tracking-widest text-neutral-500 text-sm">
+          <p className="my-3 text-center text-sm font-bold uppercase tracking-widest text-neutral-500">
             All Boards ({boards.length})
           </p>
-          <ul className="flex flex-col mt-2">
+          <ul className="mt-2 flex flex-col">
             {boardsMeta.map(({ name, id }) => {
               return (
                 <BoardLink
@@ -88,7 +86,7 @@ export const Sidebar = () => {
             <li className="mr-4">
               <Link
                 to={`/boards/${boardId}/new`}
-                className="pl-5 flex gap-4 items-center h-12 rounded-tr-full rounded-br-full text-purple-500 font-medium hover:bg-purple-100 "
+                className="flex h-12 items-center gap-4 rounded-br-full rounded-tr-full pl-5 font-medium text-purple-500 hover:bg-purple-100"
                 onClick={() =>
                   settingsDispatch({
                     type: "SET_MOBILE_SIDEBAR",
@@ -108,7 +106,7 @@ export const Sidebar = () => {
             <li className="mr-4">
               <Link
                 to={"/boards"}
-                className="pl-5 flex gap-4 items-center h-12 rounded-tr-full rounded-br-full text-purple-500 font-medium hover:bg-purple-100"
+                className="flex h-12 items-center gap-4 rounded-br-full rounded-tr-full pl-5 font-medium text-purple-500 hover:bg-purple-100"
                 onClick={() =>
                   settingsDispatch({
                     type: "SET_MOBILE_SIDEBAR",
@@ -130,7 +128,7 @@ export const Sidebar = () => {
           <ThemeSwitcher />
           <button
             type="button"
-            className="hidden sm:flex font-bold text-neutral-400 mt-5 bottom-7 items-center gap-3 pl-5 h-12 rounded-tr-full rounded-br-full w-[94%] hover:bg-purple-100 hover:text-purple-500"
+            className="bottom-7 mt-5 hidden h-12 w-[94%] items-center gap-3 rounded-br-full rounded-tr-full pl-5 font-bold text-neutral-400 hover:bg-purple-100 hover:text-purple-500 sm:flex"
             onClick={() =>
               settingsDispatch({ type: "SET_SIDEBAR", payload: false })
             }
@@ -147,7 +145,7 @@ export const Sidebar = () => {
       </section>
       <button
         type="button"
-        className="hidden bg-purple-500 absolute bottom-7 w-16 h-12 rounded-tr-full rounded-br-full sm:flex justify-center items-center hover:bg-purple-400"
+        className="absolute bottom-7 hidden h-12 w-16 items-center justify-center rounded-br-full rounded-tr-full bg-purple-500 hover:bg-purple-400 sm:flex"
         onClick={() => settingsDispatch({ type: "SET_SIDEBAR", payload: true })}
       >
         <img src="/icon-show-sidebar.svg" alt="Show Sidebar" className="h-3" />

@@ -16,11 +16,11 @@ export const BoardLink = ({
   const { dispatch } = useContext(SettingsContext);
   return (
     <>
-      <li className=" mr-4 ">
+      <li className="mr-4">
         <NavLink
           to={`/boards/${boardId}`}
           className={({ isActive }) =>
-            `pl-5 flex gap-4 items-center pr-4 h-12 rounded-tr-full rounded-br-full  font-medium ${
+            `flex h-12 items-center gap-4 rounded-br-full rounded-tr-full pl-5 pr-4 font-medium ${
               isActive
                 ? "bg-purple-500 text-white"
                 : "bg-transparent text-neutral-600"

@@ -23,32 +23,32 @@ export const WelcomeBoard = ({ firstBoardId }: { firstBoardId: string }) => {
   return (
     <>
       <section id="welcomeboard" className="flex justify-center">
-        <div className="p-8 rounded-lg max-w-2xl w-full">
+        <div className="w-full max-w-2xl rounded-lg p-8">
           <div className="text-center">
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">
+            <h1 className="mb-4 text-3xl font-bold text-gray-800">
               Welcome to Kanban Task Management
             </h1>
-            <p className="text-lg text-gray-600 mb-6">
+            <p className="mb-6 text-lg text-gray-600">
               Easily organize your tasks and projects using our intuitive Kanban
               board. Manage tasks, track progress, and stay on top of your work
               with ease.
             </p>
             <button
               onClick={() => navigate(`/boards/${firstBoardId}`)}
-              className="bg-purple-500 text-white py-3 px-6 rounded-lg hover:bg-purple-700 transition duration-300 font-bold"
+              className="rounded-lg bg-purple-500 px-6 py-3 font-bold text-white transition duration-300 hover:bg-purple-700"
             >
               Get Started
             </button>
-            <div className="flex flex-col items-center mt-14">
-              <p className="font-bold text-xl">Made By Akshat Sharma</p>
-              <ul className="flex flex-col gap-4 mt-7">
+            <div className="mt-14 flex flex-col items-center">
+              <p className="text-xl font-bold">Made By Akshat Sharma</p>
+              <ul className="mt-7 flex flex-col gap-4">
                 {links.map((link) => {
                   return (
                     <li key={link.name}>
                       <Link
                         to={link.path}
                         target="_blank"
-                        className="bg-black w-32 h-10 rounded-lg flex justify-center items-center"
+                        className="flex h-10 w-32 items-center justify-center rounded-lg bg-black"
                         rel="noopener noreferrer"
                       >
                         <img src={link.svg} alt={link.name} className="h-6" />

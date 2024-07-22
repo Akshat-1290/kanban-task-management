@@ -26,8 +26,8 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
   const renameColumn = (id: string, newName: string) => {
     setColumns(
       columns.map((column) =>
-        column.id === id ? { ...column, name: newName } : column
-      )
+        column.id === id ? { ...column, name: newName } : column,
+      ),
     );
   };
 
@@ -54,7 +54,7 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
     <>
       <ModalBase>
         <Form method="post">
-          <h2 className="font-bold text-lg">
+          <h2 className="text-lg font-bold">
             {board ? "Edit Board" : "Add New Board"}
           </h2>
           <Label caption="Board Name">
@@ -71,7 +71,7 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
             <ul className="space-y-4">
               {columns.map((column, index) => {
                 return (
-                  <li key={column.id} className="flex gap-3 items-center">
+                  <li key={column.id} className="flex items-center gap-3">
                     <Input
                       name={`column:${column.id}`}
                       value={column.name}
@@ -95,16 +95,16 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
               })}
             </ul>
           </Label>
-            <button
-              type="button"
-              onClick={() => addColumn()}
-              className="w-full mt-3 bg-purple-100 text-purple-500 font-bold rounded-full text-sm p-2"
-            >
-              + Add New Column
-            </button>
+          <button
+            type="button"
+            onClick={() => addColumn()}
+            className="mt-3 w-full rounded-full bg-purple-100 p-2 text-sm font-bold text-purple-500"
+          >
+            + Add New Column
+          </button>
           <button
             type="submit"
-            className="w-full mt-5 bg-purple-500 text-white font-bold rounded-full text-sm p-2"
+            className="mt-5 w-full rounded-full bg-purple-500 p-2 text-sm font-bold text-white"
           >
             {board ? "Save Changes" : "Add Board"}
           </button>

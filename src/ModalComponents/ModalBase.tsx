@@ -5,12 +5,14 @@ export const ModalBase = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
 
   return (
-    <section className="modal-base fixed top-0 h-screen w-screen flex justify-center items-center z-30">
+    <section className="modal-base fixed top-0 z-30 flex h-screen w-screen items-center justify-center">
       <div
-        className="modal-bg absolute bg-black bg-opacity-20 w-full h-full -z-10"
+        className="modal-bg absolute -z-10 h-full w-full bg-black bg-opacity-20"
         onClick={() => navigate(-1)}
       ></div>
-      <div className="modal bg-white w-[80vw] sm:w-[33rem] px-5 sm:px-8 py-8 shadow-lg rounded-lg">{children}</div>
+      <div className="modal w-[80vw] rounded-lg bg-white px-5 py-8 shadow-lg sm:w-[33rem] sm:px-8">
+        {children}
+      </div>
     </section>
   );
 };

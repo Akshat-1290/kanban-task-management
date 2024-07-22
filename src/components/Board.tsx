@@ -36,7 +36,7 @@ export const Board = () => {
     <>
       <section
         id="boards"
-        className={`h-calc-100vh-minus-6rem  sm:h-calc-100vh-minus-5rem overflow-scroll bg-blue-50 ${
+        className={`h-calc-100vh-minus-6rem overflow-scroll bg-blue-50 sm:h-calc-100vh-minus-5rem ${
           isSidebarOpen ? "sm:ml-64" : "sm:ml-0"
         }`}
       >
@@ -46,8 +46,7 @@ export const Board = () => {
             : firstBoardId && <WelcomeBoard firstBoardId={firstBoardId} />}
         </div>
       </section>
-      <Outlet/>
+      <Outlet />
     </>
   );
 };
-

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export const MoreModal = ({
   setIsMoreModalOpen,
-  boardId
+  boardId,
 }: {
   setIsMoreModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  boardId : string
+  boardId: string;
 }) => {
   const moreRef: RefObject<HTMLDivElement> = useRef(null);
   useEffect(() => {
@@ -27,7 +27,7 @@ export const MoreModal = ({
   return (
     <>
       <div
-        className="more absolute bg-white w-48 top-16 right-2 p-4 shadow-md border"
+        className="more absolute right-2 top-16 w-48 border bg-white p-4 shadow-md"
         tabIndex={1}
         ref={moreRef}
       >
@@ -36,17 +36,13 @@ export const MoreModal = ({
             <Link
               tabIndex={1}
               to={`/boards/${boardId}/edit`}
-              className="text-neutral-400 text-base"
+              className="text-base text-neutral-400"
             >
               Edit Board
             </Link>
           </li>
           <li>
-            <Link
-              tabIndex={1}
-              to={""}
-              className="text-red-400 text-base "
-            >
+            <Link tabIndex={1} to={""} className="text-base text-red-400">
               Delete Board
             </Link>
           </li>

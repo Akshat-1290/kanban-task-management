@@ -27,10 +27,10 @@ export const Navbar = () => {
     <>
       <section
         id="navbar"
-        className="p-4 bg-white sm:p-0 sm:border-b sm:border-blue-200 relative z-20"
+        className="relative z-20 bg-white p-4 sm:border-b sm:border-blue-200 sm:p-0"
       >
         <nav className="flex items-center">
-          <div className="logo sm:h-20 sm:flex sm:items-center sm:border-r-2 sm:border-blue-200">
+          <div className="logo sm:flex sm:h-20 sm:items-center sm:border-r-2 sm:border-blue-200">
             <Link to={"/"}>
               <img
                 src="/logo-mobile.svg"
@@ -40,15 +40,15 @@ export const Navbar = () => {
               <img
                 src="/logo-dark.svg"
                 alt="Mobile Logo"
-                className={`hidden sm:block p-5 ${
+                className={`hidden p-5 sm:block ${
                   isSidebarOpen ? "sm:pr-[5.15rem]" : "sm:pr-[1.15rem]"
                 } `}
               />
             </Link>
           </div>
-          <div className="flex grow ml-5 sm:p-5 sm:ml-0">
-            <div className="flex items-center gap-1 relative">
-              <p className="font-bold text-xl">
+          <div className="ml-5 flex grow sm:ml-0 sm:p-5">
+            <div className="relative flex items-center gap-1">
+              <p className="text-xl font-bold">
                 {activeBoard?.name || "Kanban"}
               </p>
               <button
@@ -69,7 +69,7 @@ export const Navbar = () => {
               <div className="ml-auto flex gap-5">
                 <Link
                   to={""}
-                  className="w-12 sm:w-40 sm:text-white h-8 sm:h-10 rounded-full bg-purple-600 flex justify-center items-center sm:gap-2 sm:font-bold"
+                  className="flex h-8 w-12 items-center justify-center rounded-full bg-purple-600 sm:h-10 sm:w-40 sm:gap-2 sm:font-bold sm:text-white"
                 >
                   <img src="/icon-add-task-mobile.svg" alt="Add Task" />
                   <span className="hidden sm:inline">Add New Task</span>
@@ -78,7 +78,11 @@ export const Navbar = () => {
                   type="button"
                   onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
                 >
-                  <img src="/icon-vertical-ellipsis.svg" alt="More" />
+                  <img
+                    className="h-6"
+                    src="/icon-vertical-ellipsis.svg"
+                    alt="More"
+                  />
                 </button>
                 {isMoreModalOpen && (
                   <MoreModal

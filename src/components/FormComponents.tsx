@@ -7,7 +7,9 @@ export function Label({
 }) {
   return (
     <label>
-      <p className="mt-6 mb-2 text-sm text-neutral-400 font-semibold">{label}</p>
+      <p className="mb-2 mt-6 text-sm font-semibold text-neutral-400">
+        {label}
+      </p>
       {children}
     </label>
   );
@@ -36,7 +38,7 @@ export function Input({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       autoFocus={autofocus}
-      className="bg-transparent w-full rounded-md border border-neutral-400/25 px-4 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 dark:text-white"
+      className="w-full rounded-md border border-neutral-400/25 bg-transparent px-4 py-2 text-sm text-neutral-900 placeholder:text-neutral-400 dark:text-white"
     />
   );
 }
