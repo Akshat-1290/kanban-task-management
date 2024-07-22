@@ -13,6 +13,7 @@ import localforage from "localforage";
 import { Board } from "./components/Board";
 import { CreateBoardModal } from "./ModalComponents/CreateBoardModal";
 import { EditBoardModal } from "./ModalComponents/EditBoardModal";
+import { DeleteBoardModal } from "./ModalComponents/DeleteBoardModal";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
             path : "/boards/:boardId/newColumn",
             element : <EditBoardModal newColumn={true}/>,
             action : EditBoardModal.action,
+          },
+          {
+            path : "/boards/:boardId/delete",
+            element : <DeleteBoardModal/>
           }
         ],
       },

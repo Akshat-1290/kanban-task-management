@@ -42,7 +42,7 @@ export const MoreModal = ({
             </Link>
           </li>
           <li>
-            <Link tabIndex={1} to={""} className="text-base text-red-400" onClick={() =>{setIsMoreModalOpen(false)}}>
+            <Link tabIndex={1} to={`/boards/${boardId}/delete`} className="text-base text-red-400" onClick={() =>{setIsMoreModalOpen(false)}}>
               Delete Board
             </Link>
           </li>

@@ -66,7 +66,7 @@ export const Navbar = () => {
               </button>
             </div>
             {boardId && (
-              <div className="ml-auto flex gap-5">
+              <div className="ml-auto flex gap-4">
                 <Link
                   to={""}
                   className="flex h-8 w-12 items-center justify-center rounded-full bg-purple-600 sm:h-10 sm:w-40 sm:gap-2 sm:font-bold sm:text-white"
@@ -76,6 +76,7 @@ export const Navbar = () => {
                 </Link>
                 <button
                   type="button"
+                  className="w-6"
                   onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
                 >
                   <img
