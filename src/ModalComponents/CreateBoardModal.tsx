@@ -4,9 +4,7 @@ import { BoardContext } from "../context/BoardContext";
 import type { Board } from "../lib/types";
 import { useActionData, useNavigate } from "react-router-dom";
 
-const action = async (
-  { request }: { request: Request }
-) => {
+const action = async ({ request }: { request: Request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
@@ -27,21 +25,19 @@ const action = async (
     });
 
   const newBoard = { id: newBoardId, name: data.name as string, columns };
-  return newBoard
+  return newBoard;
 };
 
 export const CreateBoardModal = () => {
   const { dispatch } = useContext(BoardContext);
-  const newBoard  = useActionData() as Board
-  const navigate = useNavigate()
-  useEffect(() =>{
-    if(newBoard){
-      dispatch({ type: "ADD_BOARD", payload: newBoard })
-      navigate(`/boards/${newBoard.id}`)
+  const newBoard = useActionData() as Board | undefined;
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (newBoard) {
+      dispatch({ type: "ADD_BOARD", payload: newBoard });
+      navigate(`/boards/${newBoard.id}`);
     }
-
-  } , [newBoard , dispatch , navigate])
-
+  }, [newBoard, dispatch, navigate]);
 
   return <BoardModal />;
 };

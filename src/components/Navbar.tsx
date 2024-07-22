@@ -21,7 +21,7 @@ export const Navbar = () => {
     settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: null });
   };
 
-  const [moreModalOpen, setMoreModalOpen] = useState<boolean>(false);
+  const [isMoreModalOpen, setIsMoreModalOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -65,22 +65,29 @@ export const Navbar = () => {
                 )}
               </button>
             </div>
-            <div className="ml-auto flex gap-5">
-              <Link
-                to={""}
-                className="w-12 sm:w-40 sm:text-white h-8 sm:h-10 rounded-full bg-purple-600 flex justify-center items-center sm:gap-2 sm:font-bold"
-              >
-                <img src="/icon-add-task-mobile.svg" alt="Add Task" />
-                <span className="hidden sm:inline">Add New Task</span>
-              </Link>
-              <button
-                type="button"
-                onClick={() => setMoreModalOpen(!moreModalOpen)}
-              >
-                <img src="/icon-vertical-ellipsis.svg" alt="More" />
-              </button>
-              {moreModalOpen && <MoreModal setMoreModalOpen={setMoreModalOpen}/>}
-            </div>
+            {boardId && (
+              <div className="ml-auto flex gap-5">
+                <Link
+                  to={""}
+                  className="w-12 sm:w-40 sm:text-white h-8 sm:h-10 rounded-full bg-purple-600 flex justify-center items-center sm:gap-2 sm:font-bold"
+                >
+                  <img src="/icon-add-task-mobile.svg" alt="Add Task" />
+                  <span className="hidden sm:inline">Add New Task</span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
+                >
+                  <img src="/icon-vertical-ellipsis.svg" alt="More" />
+                </button>
+                {isMoreModalOpen && (
+                  <MoreModal
+                    setIsMoreModalOpen={setIsMoreModalOpen}
+                    boardId={boardId}
+                  />
+                )}
+              </div>
+            )}
           </div>
         </nav>
       </section>

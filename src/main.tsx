@@ -12,6 +12,7 @@ import { SettingsProvider } from "./provider/SettingsProvider";
 import localforage from "localforage";
 import { Board } from "./components/Board";
 import { CreateBoardModal } from "./ModalComponents/CreateBoardModal";
+import { EditBoardModal } from "./ModalComponents/EditBoardModal";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/boards/:boardId",
         element: <Board />,
+        id : "board",
         loader: async ({ params }) => {
           return params.boardId;
         },
@@ -43,6 +45,11 @@ const router = createBrowserRouter([
             element : <CreateBoardModal/>,
             action : CreateBoardModal.action
           },
+          {
+            path : "/boards/:boardId/edit",
+            element : <EditBoardModal newColumn={false}/>,
+            action : EditBoardModal.action,
+          }
         ],
       },
       {
