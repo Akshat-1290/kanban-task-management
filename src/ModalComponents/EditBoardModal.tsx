@@ -49,7 +49,7 @@ export const EditBoardModal = ({ newColumn }: { newColumn: boolean }) => {
     if (editedBoard) {
       const updatedColumns = editedBoard.columns.map((column, index) => {
         if (
-          activeBoard?.columns.some((c) => c.id === column.id) &&
+          activeBoard?.columns[index]?.id === column.id &&
           activeBoard.columns[index]
         ) {
           return { ...column, tasks: activeBoard.columns[index].tasks };

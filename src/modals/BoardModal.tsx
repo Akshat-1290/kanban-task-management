@@ -94,6 +94,7 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
                 );
               })}
             </ul>
+          </Label>
             <button
               type="button"
               onClick={() => addColumn()}
@@ -101,7 +102,6 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
             >
               + Add New Column
             </button>
-          </Label>
           <button
             type="submit"
             className="w-full mt-5 bg-purple-500 text-white font-bold rounded-full text-sm p-2"
