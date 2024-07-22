@@ -36,13 +36,13 @@ export const MoreModal = ({
             <Link
               tabIndex={1}
               to={`/boards/${boardId}/edit`}
-              className="text-base text-neutral-400"
+              className="text-base text-neutral-400" onClick={() =>{setIsMoreModalOpen(false)}}
             >
               Edit Board
             </Link>
           </li>
           <li>
-            <Link tabIndex={1} to={""} className="text-base text-red-400">
+            <Link tabIndex={1} to={""} className="text-base text-red-400" onClick={() =>{setIsMoreModalOpen(false)}}>
               Delete Board
             </Link>
           </li>

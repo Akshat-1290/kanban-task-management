@@ -14,6 +14,7 @@ export default {
       height : {
         'calc-100vh-minus-5rem': 'calc(100vh - 5.1rem)',
         'calc-100vh-minus-6rem': 'calc(100vh - 6rem)',
+        'calc-100vh-plus-4rem': 'calc(100vh + 4rem)',
       },
     },
   },

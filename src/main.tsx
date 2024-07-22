@@ -49,6 +49,11 @@ const router = createBrowserRouter([
             path : "/boards/:boardId/edit",
             element : <EditBoardModal newColumn={false}/>,
             action : EditBoardModal.action,
+          },
+          {
+            path : "/boards/:boardId/newColumn",
+            element : <EditBoardModal newColumn={true}/>,
+            action : EditBoardModal.action,
           }
         ],
       },
