@@ -48,7 +48,35 @@ export type SubTasks = {
         columnId: string;
         taskId: string;
       };
+    }
+  | {
+      type: 'ADD_SUBTASK';
+      payload: {
+        boardId: string;
+        columnId: string;
+        taskId: string;
+        subtask: SubTasks;
+      };
+    }
+  | {
+      type: 'REMOVE_SUBTASK';
+      payload: {
+        boardId: string;
+        columnId: string;
+        taskId: string;
+        subtaskId : string
+      };
+    }
+  | {
+      type: 'TOGGLE_SUBTASK_COMPLETION';
+      payload: {
+        boardId: string;
+        columnId: string;
+        taskId: string;
+        subtaskId : string
+      };
     };
+
 
 
 export type SettingsType = {
