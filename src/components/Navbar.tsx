@@ -67,7 +67,7 @@ export const Navbar = () => {
               </button>
             </div>
             {boardId && (
-              <div className="ml-auto flex gap-4">
+              <div className="ml-auto flex gap-4 relative">
                 <Link
                   to={""}
                   className="flex h-8 w-12 items-center justify-center rounded-full bg-purple-600 sm:h-10 sm:w-40 sm:gap-2 sm:font-bold sm:text-white"
@@ -79,7 +79,6 @@ export const Navbar = () => {
                   type="button"
                   className="w-6 flex justify-center items-center"
                   onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
-                  tabIndex={1}
                   >
                   <img
                     className="h-6"

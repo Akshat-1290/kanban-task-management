@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 import type { Column } from "../lib/types";
 import { TaskComponent } from "./TaskComponent";
 
@@ -13,6 +13,8 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
     "bg-red-400",
     "bg-yellow-400",
   ];
+
+  const boardId = useRouteLoaderData("board") as string
 
   return (
     <>
@@ -31,14 +33,14 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
               <div className="tasks flex flex-col gap-5">
                 {currentColumn.tasks.map((currentTask) => {
                   return (
-                    <TaskComponent key={currentTask.id} task={currentTask} />
+                    <TaskComponent key={currentTask.id} task={currentTask} columnId={currentColumn.id} />
                   );
                 })}
               </div>
             </div>
           );
         })}
-        <Link to={`/boards/${columns[0]?.boardId}/newColumn`} className="newColumn w-[90vw] mt-4 ml-2 sm:ml-0 sm:mt-16 flex h-48 sm:h-calc-100vh-plus-4rem sm:w-[16rem] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:mr-3">
+        <Link to={`/boards/${boardId}/newColumn`} className="newColumn w-[90vw] mt-4 ml-2 sm:ml-0 sm:mt-16 flex h-48 sm:h-calc-100vh-plus-4rem sm:w-[16rem] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:mr-3">
           {" "}
           + New Column
         </Link>

@@ -3,8 +3,9 @@ import type { SubTasks, Tasks } from "../lib/types";
 
 type TasksProps = {
   task: Tasks;
+  columnId : string;
 };
-export const TaskComponent = ({ task }: TasksProps) => {
+export const TaskComponent = ({ task , columnId }: TasksProps) => {
   const boardId = useLoaderData();
 
   const calculateSubtasks = (subtasks: SubTasks[]) => {
@@ -16,7 +17,7 @@ export const TaskComponent = ({ task }: TasksProps) => {
   return (
     <>
       <Link
-        to={`/boards/${boardId}/tasks/${task.id}/view`}
+        to={`/boards/${boardId}/column/${columnId}/tasks/${task.id}/view`}
         className="taskcomponent sm:w-72 hover:text-purple-500"
       >
         <div className="w-fit-content space-y-1 rounded-md bg-white px-3 py-5 shadow-lg">
