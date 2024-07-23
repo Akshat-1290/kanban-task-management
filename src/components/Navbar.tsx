@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { SettingsContext } from "../context/SettingsContext";
 import { BoardContext } from "../context/BoardContext";
@@ -20,6 +20,7 @@ export const Navbar = () => {
   const toggleMobileSidebar = () => {
     settingsDispatch({ type: "SET_MOBILE_SIDEBAR", payload: null });
   };
+  const moreButtonRef  = useRef<HTMLImageElement>(null)
 
   const [isMoreModalOpen, setIsMoreModalOpen] = useState<boolean>(false);
 
@@ -76,19 +77,23 @@ export const Navbar = () => {
                 </Link>
                 <button
                   type="button"
-                  className="w-6"
+                  className="w-6 flex justify-center items-center"
                   onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
-                >
+                  tabIndex={1}
+                  >
                   <img
                     className="h-6"
                     src="/icon-vertical-ellipsis.svg"
                     alt="More"
+                    ref={moreButtonRef}
                   />
                 </button>
                 {isMoreModalOpen && (
                   <MoreModal
+                    modalType="Board"
                     setIsMoreModalOpen={setIsMoreModalOpen}
                     boardId={boardId}
+                    moreButtonRef={moreButtonRef}
                   />
                 )}
               </div>
