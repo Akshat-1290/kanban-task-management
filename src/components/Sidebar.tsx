@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { ThemeSwitcher } from "./ThemeSwitcher";
-import { useContext, useEffect, useRef, useCallback } from "react";
+import { useContext, useEffect, useRef, useCallback, useMemo } from "react";
 import { SettingsContext } from "../context/SettingsContext";
 import { useMediaQuery } from "../lib/hooks/useMediaQuery";
 import { BoardContext } from "../context/BoardContext";
@@ -16,10 +16,12 @@ export const Sidebar = () => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const sidebarContentRef = useRef<HTMLDivElement | null>(null);
   const isSmallDevice = useMediaQuery("(max-width: 639px)");
-  const boardsMeta = boards.map((board) => ({
-    id: board.id,
-    name: board.name,
-  }));
+  const boardsMeta = useMemo(() => {
+   return boards.map((board) => ({
+      id: board.id,
+      name: board.name,
+    }));
+  }, [boards]);
   const boardId = useParams().boardId;
 
   const updateSidebarState = useCallback(() => {

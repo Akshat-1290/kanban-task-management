@@ -19,7 +19,6 @@ const action = async ({ request }: { request: Request }) => {
       return {
         id: id || "",
         name: value.toString(),
-        boardId: newBoardId,
         tasks: [],
       };
     });

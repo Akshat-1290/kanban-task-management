@@ -16,7 +16,7 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
 
   return (
     <>
-      <div className="boardColumns flex flex-col sm:flex-row sm:gap-6 w-fit space-y-4">
+      <div className="boardColumns flex flex-col sm:flex-row sm:gap-6 w-fit">
         {columns.map((currentColumn, index) => {
           return (
             <div key={currentColumn.id}>
@@ -38,7 +38,7 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
             </div>
           );
         })}
-        <Link to={`/boards/${columns[0]?.boardId}/newColumn`} className="newColumn w-[90vw] ml-2 sm:ml-0 sm:mt-16 flex h-48 sm:h-calc-100vh-plus-4rem sm:w-[16rem] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:mr-3">
+        <Link to={`/boards/${columns[0]?.boardId}/newColumn`} className="newColumn w-[90vw] mt-4 ml-2 sm:ml-0 sm:mt-16 flex h-48 sm:h-calc-100vh-plus-4rem sm:w-[16rem] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:mr-3">
           {" "}
           + New Column
         </Link>

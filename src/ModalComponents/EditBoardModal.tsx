@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { BoardModal } from "../modals/BoardModal";
 import { BoardContext } from "../context/BoardContext";
 import {
@@ -21,7 +21,6 @@ const action = async ({ params, request }: ActionFunctionArgs) => {
       return {
         id: id || "",
         name: value.toString(),
-        boardId: params.boardId,
         tasks: [],
       };
     });
@@ -41,7 +40,7 @@ export const EditBoardModal = ({ newColumn }: { newColumn: boolean }) => {
     dispatch,
   } = useContext(BoardContext);
   const boardId = useRouteLoaderData("board") as string;
-  const activeBoard = boards.find((board) => board.id === boardId);
+  const activeBoard = useMemo(() => boards.find((board) => board.id === boardId) , [boards, boardId]);
   const editedBoard = useActionData() as Board | undefined;
   const navigate = useNavigate();
 
@@ -57,7 +56,6 @@ export const EditBoardModal = ({ newColumn }: { newColumn: boolean }) => {
           return column;
         }
       });
-      console.log(updatedColumns);
 
       dispatch({
         type: "UPDATE_BOARD",

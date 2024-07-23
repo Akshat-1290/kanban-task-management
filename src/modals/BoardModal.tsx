@@ -17,7 +17,6 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
             id: crypto.randomUUID(),
             name: "",
             tasks: [],
-            boardId: board.id,
           } as Column,
         ]
       : board.columns
@@ -42,7 +41,6 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
         id: crypto.randomUUID(),
         name: "",
         tasks: [],
-        boardId: board?.id,
       } as Column,
     ]);
   };

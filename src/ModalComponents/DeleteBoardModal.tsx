@@ -1,6 +1,6 @@
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import { ModalBase } from "./ModalBase";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { BoardContext } from "../context/BoardContext";
 import { ErrorDeleteModal } from "./ErrorDeleteModal";
 
@@ -10,8 +10,7 @@ export const DeleteBoardModal = () => {
     dispatch,
   } = useContext(BoardContext);
   const boardId = useRouteLoaderData("board") as string;
-  const activeBoard = boards.find((board) => board.id === boardId);
-  const navigate = useNavigate();
+  const activeBoard = useMemo(() => boards.find((board) => board.id === boardId) , [boards, boardId]);  const navigate = useNavigate();
   const [isDeleting, setIsDeleting] = useState(false);
   const [errorDeleting, setErrorDeleting] = useState(false);
 

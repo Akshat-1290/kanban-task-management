@@ -16,8 +16,8 @@ export const TaskComponent = ({ task }: TasksProps) => {
   return (
     <>
       <Link
-        to={`/boards/${boardId}/task/${task.id}`}
-        className="taskcomponent sm:w-72"
+        to={`/boards/${boardId}/tasks/${task.id}/view`}
+        className="taskcomponent sm:w-72 hover:text-purple-500"
       >
         <div className="w-fit-content space-y-1 rounded-md bg-white px-3 py-5 shadow-lg">
           <p className="text-base font-bold">{task.title}</p>
