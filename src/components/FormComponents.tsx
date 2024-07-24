@@ -34,6 +34,7 @@ export function Input({
     <input
       type="text"
       name={name}
+      id={name}
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}

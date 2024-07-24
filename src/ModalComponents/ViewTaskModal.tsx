@@ -62,9 +62,11 @@ export const ViewTaskModal = () => {
           type: "ADD_TASK",
           payload: { boardId, columnId: newColumnId, task: activeTask },
         });
-        navigate(
-          `/boards/${boardId}/column/${newColumnId}/tasks/${taskId}/view`,
-        );
+        setTimeout(() => {
+          navigate(
+            `/boards/${boardId}/column/${newColumnId}/tasks/${taskId}/view`,
+          );
+        }, 200);
       }
     }
   }, [
@@ -82,79 +84,85 @@ export const ViewTaskModal = () => {
   return (
     <>
       <ModalBase>
-        <div>
-          <div className="task-header relative flex justify-between">
-            <p className="text-lg font-bold">{activeTask?.title}</p>
-            <button
-              type="button"
-              className="flex w-6 items-center justify-center"
-              onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
-            >
-              <img
-                className="h-6"
-                src="/icon-vertical-ellipsis.svg"
-                alt="More"
-                ref={moreButtonRef}
-              />
-            </button>
-            {isMoreModalOpen && (
-              <MoreModal
-                modalType="Task"
-                setIsMoreModalOpen={setIsMoreModalOpen}
-                boardId={boardId}
-                columnId={columnId}
-                taskId={taskId}
-                moreButtonRef={moreButtonRef}
-              />
-            )}
-          </div>
-          <p className="desc mt-2 text-sm font-normal text-neutral-500">
-            {activeTask?.description}
-          </p>
-          <div className="task-body mt-4">
-            <p className="text-xs font-semibold text-neutral-500">
-              Subtasks ({" "}
-              {activeTask?.subtasks && calculateSubtasks(activeTask?.subtasks)})
+        {activeTask ? (
+          <div>
+            <div className="task-header relative flex justify-between">
+              <p className="text-lg font-bold">{activeTask?.title}</p>
+              <button
+                type="button"
+                className="flex w-6 items-center justify-center"
+                onClick={() => setIsMoreModalOpen(!isMoreModalOpen)}
+              >
+                <img
+                  className="h-6"
+                  src="/icon-vertical-ellipsis.svg"
+                  alt="More"
+                  ref={moreButtonRef}
+                />
+              </button>
+              {isMoreModalOpen && (
+                <MoreModal
+                  modalType="Task"
+                  setIsMoreModalOpen={setIsMoreModalOpen}
+                  boardId={boardId}
+                  columnId={columnId}
+                  taskId={taskId}
+                  moreButtonRef={moreButtonRef}
+                />
+              )}
+            </div>
+            <p className="desc mt-2 text-sm font-normal text-neutral-500">
+              {activeTask?.description}
             </p>
-            <ul className="mt-4 space-y-3">
-              {activeTask?.subtasks.map((subtask) => {
-                return (
-                  <li key={subtask.id}>
-                    <label className="flex h-10 cursor-pointer items-center gap-4 rounded-md bg-blue-50 px-3 hover:bg-purple-100">
-                      <input
-                        type="checkbox"
-                        name="subtaskCompletion"
-                        id="subtaskCompletion"
-                        checked={subtask.isCompleted}
-                        onChange={() => {
-                          dispatch({
-                            type: "TOGGLE_SUBTASK_COMPLETION",
-                            payload: {
-                              boardId: boardId,
-                              columnId: columnId,
-                              taskId: taskId,
-                              subtaskId: subtask.id,
-                            },
-                          });
-                        }}
-                      />
-                      <p
-                        className={`text-sm font-semibold ${subtask.isCompleted ? "text-neutral-900 text-opacity-50 line-through" : ""}`}
-                      >
-                        {subtask.title}
-                      </p>
-                    </label>
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="task-body mt-4">
+              <p className="text-xs font-semibold text-neutral-500">
+                Subtasks ({" "}
+                {activeTask?.subtasks &&
+                  calculateSubtasks(activeTask?.subtasks)}
+                )
+              </p>
+              <ul className="mt-4 space-y-3">
+                {activeTask?.subtasks.map((subtask) => {
+                  return (
+                    <li key={subtask.id}>
+                      <label className="flex h-10 cursor-pointer items-center gap-4 rounded-md bg-blue-50 px-3 hover:bg-purple-100">
+                        <input
+                          type="checkbox"
+                          name="subtaskCompletion"
+                          id={`SubtaskCompletion-${subtask.id}`}
+                          checked={subtask.isCompleted}
+                          onChange={() => {
+                            dispatch({
+                              type: "TOGGLE_SUBTASK_COMPLETION",
+                              payload: {
+                                boardId: boardId,
+                                columnId: columnId,
+                                taskId: taskId,
+                                subtaskId: subtask.id,
+                              },
+                            });
+                          }}
+                        />
+                        <p
+                          className={`text-sm font-semibold ${subtask.isCompleted ? "text-neutral-900 text-opacity-50 line-through" : ""}`}
+                        >
+                          {subtask.title}
+                        </p>
+                      </label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <ColumnList
+              selectedColumn={selectedColumn}
+              setSelectedColumn={setSelectedColumn}
+              columnNameList={columnNameList ?? []}
+            />
           </div>
-          <ColumnList
-            selectedColumn={selectedColumn}
-            setSelectedColumn={setSelectedColumn}
-            columnNameList={columnNameList ?? []}
-          />
-        </div>
+        ) : (
+          <img src="/loader.svg" alt="Loader" className="m-auto h-14"></img>
+        )}
       </ModalBase>
     </>
   );
