@@ -7,7 +7,7 @@ export function Label({
 }) {
   return (
     <label>
-      <p className="mb-2 mt-6 text-sm font-semibold text-neutral-400">
+      <p className="mb-2 mt-6 text-sm font-semibold text-neutral-400 dark:text-white">
         {label}
       </p>
       {children}

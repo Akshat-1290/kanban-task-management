@@ -27,9 +27,8 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: async () => {
-          const lastActiveBoardId = await localforage.getItem(
-            "lastActiveBoardId"
-          );
+          const lastActiveBoardId =
+            await localforage.getItem("lastActiveBoardId");
           if (lastActiveBoardId) {
             return redirect(`/boards/${lastActiveBoardId}`);
           } else {
@@ -40,55 +39,55 @@ const router = createBrowserRouter([
       {
         path: "/boards/:boardId",
         element: <Board />,
-        id : "board",
+        id: "board",
         loader: async ({ params }) => {
           return params.boardId;
         },
         children: [
           {
             path: "/boards/:boardId/new",
-            element : <CreateBoardModal/>,
-            action : CreateBoardModal.action
+            element: <CreateBoardModal />,
+            action: CreateBoardModal.action,
           },
           {
-            path : "/boards/:boardId/edit",
-            element : <EditBoardModal newColumn={false}/>,
-            action : EditBoardModal.action,
+            path: "/boards/:boardId/edit",
+            element: <EditBoardModal newColumn={false} />,
+            action: EditBoardModal.action,
           },
           {
-            path : "/boards/:boardId/newColumn",
-            element : <EditBoardModal newColumn={true}/>,
-            action : EditBoardModal.action,
+            path: "/boards/:boardId/newColumn",
+            element: <EditBoardModal newColumn={true} />,
+            action: EditBoardModal.action,
           },
           {
-            path : "/boards/:boardId/delete",
-            element : <DeleteBoardModal/>
+            path: "/boards/:boardId/delete",
+            element: <DeleteBoardModal />,
           },
           {
-            path : "/boards/:boardId/column/:columnId/tasks/:taskId",
-            id : "task",
-            loader : ViewTaskModal.loader,
-            children : [
+            path: "/boards/:boardId/column/:columnId/tasks/:taskId",
+            id: "task",
+            loader: ViewTaskModal.loader,
+            children: [
               {
-                path : "/boards/:boardId/column/:columnId/tasks/:taskId/view",
-                element: <ViewTaskModal/>,
+                path: "/boards/:boardId/column/:columnId/tasks/:taskId/view",
+                element: <ViewTaskModal />,
               },
               {
-                path : "/boards/:boardId/column/:columnId/tasks/:taskId/edit",
-                element : <EditTaskModal/>,
-                action : EditTaskModal.action
+                path: "/boards/:boardId/column/:columnId/tasks/:taskId/edit",
+                element: <EditTaskModal />,
+                action: EditTaskModal.action,
               },
               {
-                path : "/boards/:boardId/column/:columnId/tasks/:taskId/delete",
-                element : <DeleteTaskModal/>,
+                path: "/boards/:boardId/column/:columnId/tasks/:taskId/delete",
+                element: <DeleteTaskModal />,
               },
-            ]
+            ],
           },
           {
-            path : "/boards/:boardId/newTask",
-            element : <CreateTaskModal/>,
-            action : CreateTaskModal.action
-          }
+            path: "/boards/:boardId/newTask",
+            element: <CreateTaskModal />,
+            action: CreateTaskModal.action,
+          },
         ],
       },
       {
@@ -101,10 +100,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BoardProvider>
-      <SettingsProvider>
+    <SettingsProvider>
+      <BoardProvider>
         <RouterProvider router={router}></RouterProvider>
-      </SettingsProvider>
-    </BoardProvider>
-  </React.StrictMode>
+      </BoardProvider>
+    </SettingsProvider>
+  </React.StrictMode>,
 );

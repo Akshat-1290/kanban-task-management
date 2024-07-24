@@ -2,27 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    @font-face {
-        font-family: Plus Jakarta Sans;
-        font-weight: 200 800;
-        font-display: swap;
-        src: url(./assets/PlusJakartaSans-VariableFont_wght.ttf);
-    }
-
+@layer base {
+  @font-face {
+    font-family: Plus Jakarta Sans;
+    font-weight: 200 800;
+    font-display: swap;
+    src: url(./assets/PlusJakartaSans-VariableFont_wght.ttf);
+  }
 }
 
-@layer components{
-    .activeMobileSidebar{
-        @apply !visible !top-16
-    }
-    .showSidebar{
-        @apply !-left-0 !visible
-     }
+@layer components {
+  .activeMobileSidebar {
+    @apply !visible !top-16;
+  }
+  .showSidebar {
+    @apply !visible !-left-0;
+  }
 }
 
 @layer utilities {
-    .activeSwitch::after{
-            @apply !left-[1.65rem]
-        }
+  .activeSwitch::after {
+    @apply !left-[1.65rem];
+  }
 }

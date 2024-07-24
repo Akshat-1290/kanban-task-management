@@ -29,11 +29,11 @@ export const DeleteTaskModal = () => {
   return (
     <>
       <ModalBase>
-        <div className="space-y-3 px-2">
+        <div className="space-y-4 px-2">
           <h2 className="text-base font-semibold text-red-500">
             Delete this task?
           </h2>
-          <p className="text-sm leading-6 text-neutral-500">
+          <p className="text-sm leading-6 text-neutral-500 dark:text-neutral-400">
             Are you sure you want to delete the '{activeTask?.title}' task and
             its subtasks? This action will cannot be reversed.{" "}
           </p>
@@ -41,7 +41,7 @@ export const DeleteTaskModal = () => {
             <button
               type="button"
               tabIndex={1}
-              className="h-10 w-1/2 rounded-full bg-red-600 bg-opacity-80 text-white hover:bg-red-400"
+              className="h-10 w-1/2 rounded-full bg-red-600 font-bold text-white hover:bg-red-400"
               onClick={() => {
                 dispatch({
                   type: "REMOVE_TASK",
@@ -55,7 +55,7 @@ export const DeleteTaskModal = () => {
             <button
               type="button"
               tabIndex={1}
-              className="h-10 w-1/2 rounded-full bg-blue-200 bg-opacity-80 hover:bg-blue-400"
+              className="h-10 w-1/2 rounded-full bg-blue-200 bg-opacity-80 font-bold hover:bg-blue-400 dark:bg-neutral-600 dark:text-blue-600 hover:dark:bg-neutral-800"
               onClick={() => {
                 navigate(`/boards/${boardId}`);
               }}

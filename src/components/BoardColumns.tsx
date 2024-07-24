@@ -14,11 +14,11 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
     "bg-yellow-400",
   ];
 
-  const boardId = useRouteLoaderData("board") as string
+  const boardId = useRouteLoaderData("board") as string;
 
   return (
     <>
-      <div className="boardColumns flex flex-col sm:flex-row sm:gap-6 w-fit">
+      <div className="boardColumns flex w-fit flex-col sm:flex-row sm:gap-6">
         {columns.map((currentColumn, index) => {
           return (
             <div key={currentColumn.id}>
@@ -26,21 +26,28 @@ export const BoardColumns = ({ columns }: ColumnProps) => {
                 <div
                   className={`dot ${colors[index % colors.length]} h-4 w-4 rounded-full`}
                 ></div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-neutral-500">
+                <p className="text-sm font-semibold uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
                   {currentColumn.name} ({currentColumn.tasks.length})
                 </p>
               </div>
               <div className="tasks flex flex-col gap-5">
                 {currentColumn.tasks.map((currentTask) => {
                   return (
-                    <TaskComponent key={currentTask.id} task={currentTask} columnId={currentColumn.id} />
+                    <TaskComponent
+                      key={currentTask.id}
+                      task={currentTask}
+                      columnId={currentColumn.id}
+                    />
                   );
                 })}
               </div>
             </div>
           );
         })}
-        <Link to={`/boards/${boardId}/newColumn`} className="newColumn w-[90vw] mt-4 ml-2 sm:ml-0 sm:mt-16 flex h-48 sm:h-calc-100vh-plus-4rem sm:w-[16rem] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:mr-3">
+        <Link
+          to={`/boards/${boardId}/newColumn`}
+          className="newColumn ml-2 mt-4 flex h-48 w-[90vw] cursor-pointer items-center justify-center rounded-md bg-purple-500 bg-opacity-5 text-2xl font-bold text-purple-400 sm:ml-0 sm:mr-3 sm:mt-16 sm:h-calc-100vh-plus-4rem sm:w-[16rem] dark:bg-neutral-700 dark:text-neutral-400"
+        >
           {" "}
           + New Column
         </Link>

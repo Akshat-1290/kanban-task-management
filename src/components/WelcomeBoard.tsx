@@ -25,10 +25,10 @@ export const WelcomeBoard = ({ firstBoardId }: { firstBoardId: string }) => {
       <section id="welcomeboard" className="flex justify-center">
         <div className="w-full max-w-2xl rounded-lg p-8">
           <div className="text-center">
-            <h1 className="mb-4 text-3xl font-bold text-gray-800">
+            <h1 className="mb-4 text-3xl font-bold text-gray-800 dark:text-white">
               Welcome to Kanban Task Management
             </h1>
-            <p className="mb-6 text-lg text-gray-600">
+            <p className="mb-6 text-lg text-gray-600 dark:text-neutral-400">
               Easily organize your tasks and projects using our intuitive Kanban
               board. Manage tasks, track progress, and stay on top of your work
               with ease.
@@ -40,7 +40,9 @@ export const WelcomeBoard = ({ firstBoardId }: { firstBoardId: string }) => {
               Get Started
             </button>
             <div className="mt-14 flex flex-col items-center">
-              <p className="text-xl font-bold">Made By Akshat Sharma</p>
+              <p className="text-xl font-bold dark:text-white">
+                Made By Akshat Sharma
+              </p>
               <ul className="mt-7 flex flex-col gap-4">
                 {links.map((link) => {
                   return (
@@ -48,7 +50,7 @@ export const WelcomeBoard = ({ firstBoardId }: { firstBoardId: string }) => {
                       <Link
                         to={link.path}
                         target="_blank"
-                        className="flex h-10 w-32 items-center justify-center rounded-lg bg-black"
+                        className="flex h-10 w-32 items-center justify-center rounded-lg bg-black dark:bg-neutral-700"
                         rel="noopener noreferrer"
                       >
                         <img src={link.svg} alt={link.name} className="h-6" />

@@ -69,7 +69,7 @@ export const EditTaskModal = () => {
       )?.id;
       if (newColumnId && prevColumnId) {
         if (prevColumnId !== newColumnId) {
-            console.log("JJ");
+          console.log("JJ");
 
           dispatch({
             type: "REMOVE_TASK",

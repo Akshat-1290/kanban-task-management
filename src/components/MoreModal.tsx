@@ -40,7 +40,7 @@ export const MoreModal = ({
   return (
     <>
       <div
-        className="more absolute -right-2 top-9 w-48 border bg-white p-4 shadow-md"
+        className="more absolute -right-2 top-9 w-48 rounded-md border bg-white p-4 shadow-md dark:border-0 dark:bg-neutral-800"
         tabIndex={1}
         ref={moreRef}
       >

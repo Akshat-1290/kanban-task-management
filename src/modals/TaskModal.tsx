@@ -50,7 +50,7 @@ export const TaskModal = ({ board, task, colId }: TaskModalProps) => {
     <>
       <ModalBase>
         <Form method="post">
-          <h2 className="text-lg font-bold">
+          <h2 className="text-lg font-bold dark:text-white">
             {task ? "Edit Task" : "Add New Task"}
           </h2>
           <Label caption="Title">
@@ -105,7 +105,7 @@ export const TaskModal = ({ board, task, colId }: TaskModalProps) => {
           <button
             type="button"
             onClick={() => addSubtask()}
-            className="mt-3 w-full rounded-full bg-purple-100 p-2 text-sm font-bold text-purple-500"
+            className="mt-3 w-full rounded-full bg-purple-100 p-2 text-sm font-bold text-purple-500 dark:bg-white dark:text-purple-500"
           >
             + Add New Subtask
           </button>

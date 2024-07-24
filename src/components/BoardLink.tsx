@@ -20,10 +20,10 @@ export const BoardLink = ({
         <NavLink
           to={`/boards/${boardId}`}
           className={({ isActive }) =>
-            `flex h-12 items-center gap-4 rounded-br-full rounded-tr-full pl-5 pr-4 font-medium ${
+            `flex h-12 items-center gap-4 rounded-br-full rounded-tr-full pl-5 pr-4 font-medium hover:bg-purple-100 hover:dark:bg-white hover:dark:text-purple-500 ${
               isActive
                 ? "bg-purple-500 text-white"
-                : "bg-transparent text-neutral-600"
+                : "bg-transparent text-neutral-600 dark:text-neutral-400"
             }`
           }
           onClick={() => {

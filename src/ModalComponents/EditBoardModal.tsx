@@ -40,7 +40,10 @@ export const EditBoardModal = ({ newColumn }: { newColumn: boolean }) => {
     dispatch,
   } = useContext(BoardContext);
   const boardId = useRouteLoaderData("board") as string;
-  const activeBoard = useMemo(() => boards.find((board) => board.id === boardId) , [boards, boardId]);
+  const activeBoard = useMemo(
+    () => boards.find((board) => board.id === boardId),
+    [boards, boardId],
+  );
   const editedBoard = useActionData() as Board | undefined;
   const navigate = useNavigate();
 

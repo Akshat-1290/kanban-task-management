@@ -1,40 +1,39 @@
 export type SubTasks = {
-    id: string;
-    title: string;
-    isCompleted: boolean;
-  };
+  id: string;
+  title: string;
+  isCompleted: boolean;
+};
 
-  export type Tasks = {
-    id: string;
-    title: string;
-    description: string;
-    status: string;
-    subtasks: SubTasks[];
-  };
+export type Tasks = {
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  subtasks: SubTasks[];
+};
 
-  export type Column = {
-    id: string;
-    name: string;
-    tasks: Tasks[];
-  };
+export type Column = {
+  id: string;
+  name: string;
+  tasks: Tasks[];
+};
 
-  export type Board = {
-    id: string;
-    name: string;
-    columns: Column[];
-  };
+export type Board = {
+  id: string;
+  name: string;
+  columns: Column[];
+};
 
-  export type BoardState = {
-    boards: Board[];
-
-  }
-  export type BoardAction =
-  | { type: 'SET_INITIAL_STATE'; payload: BoardState }
-  | { type: 'ADD_BOARD'; payload: Board }
-  | { type: 'REMOVE_BOARD'; payload: string }
-  | { type: 'UPDATE_BOARD'; payload: Board }
+export type BoardState = {
+  boards: Board[];
+};
+export type BoardAction =
+  | { type: "SET_INITIAL_STATE"; payload: BoardState }
+  | { type: "ADD_BOARD"; payload: Board }
+  | { type: "REMOVE_BOARD"; payload: string }
+  | { type: "UPDATE_BOARD"; payload: Board }
   | {
-      type: 'ADD_TASK';
+      type: "ADD_TASK";
       payload: {
         boardId: string;
         columnId: string;
@@ -42,7 +41,7 @@ export type SubTasks = {
       };
     }
   | {
-      type: 'REMOVE_TASK';
+      type: "REMOVE_TASK";
       payload: {
         boardId: string;
         columnId: string;
@@ -50,15 +49,15 @@ export type SubTasks = {
       };
     }
   | {
-      type: 'UPDATE_TASK';
+      type: "UPDATE_TASK";
       payload: {
         boardId: string;
         columnId: string;
-        task : Tasks;
+        task: Tasks;
       };
     }
   | {
-      type: 'ADD_SUBTASK';
+      type: "ADD_SUBTASK";
       payload: {
         boardId: string;
         columnId: string;
@@ -67,34 +66,31 @@ export type SubTasks = {
       };
     }
   | {
-      type: 'REMOVE_SUBTASK';
+      type: "REMOVE_SUBTASK";
       payload: {
         boardId: string;
         columnId: string;
         taskId: string;
-        subtaskId : string
+        subtaskId: string;
       };
     }
   | {
-      type: 'TOGGLE_SUBTASK_COMPLETION';
+      type: "TOGGLE_SUBTASK_COMPLETION";
       payload: {
         boardId: string;
         columnId: string;
         taskId: string;
-        subtaskId : string
+        subtaskId: string;
       };
     };
 
-
-
 export type SettingsType = {
-  darkMode : boolean | null,
-  isMobileSidebarOpen : boolean ,
-  isSidebarOpen : boolean | null,
-}
+  darkMode: boolean | null;
+  isMobileSidebarOpen: boolean;
+  isSidebarOpen: boolean | null;
+};
 
 export type SettingsAction =
-| { type: 'SET_DARK_MODE'}
-| { type: 'SET_MOBILE_SIDEBAR' , payload : boolean | null}
-| { type: 'SET_SIDEBAR' , payload : boolean | null}
-
+  | { type: "SET_DARK_MODE"; payload: boolean | null }
+  | { type: "SET_MOBILE_SIDEBAR"; payload: boolean | null }
+  | { type: "SET_SIDEBAR"; payload: boolean | null };

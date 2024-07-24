@@ -52,7 +52,7 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
     <>
       <ModalBase>
         <Form method="post">
-          <h2 className="text-lg font-bold">
+          <h2 className="text-lg font-bold dark:text-white">
             {board ? "Edit Board" : "Add New Board"}
           </h2>
           <Label caption="Board Name">
@@ -96,7 +96,7 @@ export const BoardModal = ({ board, newColumn }: BoardModalProps) => {
           <button
             type="button"
             onClick={() => addColumn()}
-            className="mt-3 w-full rounded-full bg-purple-100 p-2 text-sm font-bold text-purple-500"
+            className="mt-3 w-full rounded-full bg-purple-100 p-2 text-sm font-bold text-purple-500 dark:bg-white"
           >
             + Add New Column
           </button>

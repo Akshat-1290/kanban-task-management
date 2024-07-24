@@ -37,7 +37,7 @@ export const Board = () => {
     <>
       <section
         id="boards"
-        className={`h-calc-100vh-minus-6rem overflow-scroll bg-blue-50 sm:h-calc-100vh-minus-5rem ${
+        className={`h-calc-100vh-minus-6rem overflow-scroll bg-blue-50 sm:h-calc-100vh-minus-5rem dark:bg-neutral-800 ${
           isSidebarOpen ? "sm:ml-64" : "sm:ml-0"
         }`}
       >

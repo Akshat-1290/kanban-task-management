@@ -10,7 +10,11 @@ export const DeleteBoardModal = () => {
     dispatch,
   } = useContext(BoardContext);
   const boardId = useRouteLoaderData("board") as string;
-  const activeBoard = useMemo(() => boards.find((board) => board.id === boardId) , [boards, boardId]);  const navigate = useNavigate();
+  const activeBoard = useMemo(
+    () => boards.find((board) => board.id === boardId),
+    [boards, boardId],
+  );
+  const navigate = useNavigate();
   const [isDeleting, setIsDeleting] = useState(false);
   const [errorDeleting, setErrorDeleting] = useState(false);
 
@@ -26,7 +30,6 @@ export const DeleteBoardModal = () => {
       }
     }
   }, [boards, isDeleting, navigate, boardId, dispatch]);
-
 
   return (
     <>
@@ -45,7 +48,7 @@ export const DeleteBoardModal = () => {
             <h2 className="text-base font-semibold text-red-500">
               Delete this board?
             </h2>
-            <p className="text-sm leading-6 text-neutral-500">
+            <p className="text-sm leading-6 text-neutral-500 dark:text-neutral-400">
               Are you sure you want to delete the '{activeBoard?.name}' board?
               This action will remove all columns and tasks and cannot be
               reversed.{" "}
@@ -54,7 +57,7 @@ export const DeleteBoardModal = () => {
               <button
                 type="button"
                 tabIndex={1}
-                className="h-10 w-1/2 rounded-full bg-red-600 bg-opacity-80 text-white hover:bg-red-400"
+                className="h-10 w-1/2 rounded-full bg-red-600 bg-opacity-80 font-bold text-white hover:bg-red-400"
                 onClick={() => {
                   setIsDeleting(true);
                 }}
@@ -64,7 +67,7 @@ export const DeleteBoardModal = () => {
               <button
                 type="button"
                 tabIndex={1}
-                className="h-10 w-1/2 rounded-full bg-blue-200 bg-opacity-80 hover:bg-blue-400"
+                className="h-10 w-1/2 rounded-full bg-blue-200 bg-opacity-80 font-bold hover:bg-blue-400 dark:bg-neutral-600 dark:text-blue-600 hover:dark:bg-neutral-800"
                 onClick={() => {
                   navigate(`/boards/${boardId}`);
                 }}

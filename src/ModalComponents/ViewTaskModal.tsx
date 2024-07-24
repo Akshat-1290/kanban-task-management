@@ -87,7 +87,9 @@ export const ViewTaskModal = () => {
         {activeTask ? (
           <div>
             <div className="task-header relative flex justify-between">
-              <p className="text-lg font-bold">{activeTask?.title}</p>
+              <p className="text-lg font-bold dark:text-white">
+                {activeTask?.title}
+              </p>
               <button
                 type="button"
                 className="flex w-6 items-center justify-center"
@@ -111,11 +113,11 @@ export const ViewTaskModal = () => {
                 />
               )}
             </div>
-            <p className="desc mt-2 text-sm font-normal text-neutral-500">
+            <p className="desc mt-2 text-sm font-normal text-neutral-500 dark:text-neutral-400">
               {activeTask?.description}
             </p>
             <div className="task-body mt-4">
-              <p className="text-xs font-semibold text-neutral-500">
+              <p className="text-xs font-semibold text-neutral-500 dark:text-white">
                 Subtasks ({" "}
                 {activeTask?.subtasks &&
                   calculateSubtasks(activeTask?.subtasks)}
@@ -125,9 +127,10 @@ export const ViewTaskModal = () => {
                 {activeTask?.subtasks.map((subtask) => {
                   return (
                     <li key={subtask.id}>
-                      <label className="flex h-10 cursor-pointer items-center gap-4 rounded-md bg-blue-50 px-3 hover:bg-purple-100">
+                      <label className="flex h-10 cursor-pointer items-center gap-4 rounded-md bg-blue-50 px-3 hover:bg-purple-100 dark:bg-neutral-800 hover:dark:bg-neutral-900">
                         <input
                           type="checkbox"
+                          className="accent-purple-500"
                           name="subtaskCompletion"
                           id={`SubtaskCompletion-${subtask.id}`}
                           checked={subtask.isCompleted}
@@ -144,7 +147,7 @@ export const ViewTaskModal = () => {
                           }}
                         />
                         <p
-                          className={`text-sm font-semibold ${subtask.isCompleted ? "text-neutral-900 text-opacity-50 line-through" : ""}`}
+                          className={`text-sm font-semibold dark:text-neutral-400 ${subtask.isCompleted ? "text-neutral-900 text-opacity-50 line-through" : ""}`}
                         >
                           {subtask.title}
                         </p>

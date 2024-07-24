@@ -1,7 +1,6 @@
-import { createContext} from "react";
+import { createContext } from "react";
 import { initialState } from "../reducers/settingsReducer";
 import type { SettingsAction, SettingsType } from "../lib/types";
-
 
 export const SettingsContext = createContext<{
   state: SettingsType;
@@ -10,7 +9,3 @@ export const SettingsContext = createContext<{
   state: initialState,
   dispatch: () => null,
 });
-
-
-
-

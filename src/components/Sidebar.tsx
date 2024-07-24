@@ -17,7 +17,7 @@ export const Sidebar = () => {
   const sidebarContentRef = useRef<HTMLDivElement | null>(null);
   const isSmallDevice = useMediaQuery("(max-width: 639px)");
   const boardsMeta = useMemo(() => {
-   return boards.map((board) => ({
+    return boards.map((board) => ({
       id: board.id,
       name: board.name,
     }));
@@ -45,17 +45,11 @@ export const Sidebar = () => {
     updateSidebarState();
   }, [updateSidebarState]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      sidebarRef.current?.classList.add("!flex");
-    }, 1);
-  }, []);
-
   return (
     <>
       <section
         id="sidebar"
-        className="invisible fixed -top-full z-10 hidden h-screen w-full justify-center bg-transparent transition-all duration-200 sm:absolute sm:-left-full sm:top-20 sm:h-calc-100vh-minus-5rem sm:w-fit"
+        className="invisible fixed -top-full z-10 flex h-screen w-full justify-center bg-transparent sm:absolute sm:-left-full sm:top-20 sm:h-calc-100vh-minus-5rem sm:w-fit transition-all duration-300 sm:transition-none"
         ref={sidebarRef}
       >
         <div
@@ -67,11 +61,11 @@ export const Sidebar = () => {
           }}
         ></div>
         <div
-          className="mt-7 flex h-fit w-64 flex-col rounded-md border border-blue-200 bg-white pb-4 sm:relative sm:mt-0 sm:h-full sm:overflow-auto sm:rounded-none"
+          className="mt-7 flex h-fit w-64 flex-col rounded-md border border-blue-200 bg-white pb-4 sm:relative sm:mt-0 sm:h-full sm:overflow-auto sm:rounded-none dark:border-neutral-600 dark:bg-neutral-700"
           tabIndex={1}
           ref={sidebarContentRef}
         >
-          <p className="my-3 text-center text-sm font-bold uppercase tracking-widest text-neutral-500">
+          <p className="my-3 text-center text-sm font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
             All Boards ({boards.length})
           </p>
           <ul className="mt-2 flex flex-col">
@@ -130,7 +124,7 @@ export const Sidebar = () => {
           <ThemeSwitcher />
           <button
             type="button"
-            className="bottom-7 mt-5 hidden h-12 w-[94%] items-center gap-3 rounded-br-full rounded-tr-full pl-5 font-bold text-neutral-400 hover:bg-purple-100 hover:text-purple-500 sm:flex"
+            className="bottom-7 mt-5 hidden h-12 w-[94%] items-center gap-3 rounded-br-full rounded-tr-full pl-5 font-bold text-neutral-400 hover:bg-purple-100 hover:text-purple-500 sm:flex dark:text-neutral-400 hover:dark:bg-white hover:dark:text-purple-500"
             onClick={() =>
               settingsDispatch({ type: "SET_SIDEBAR", payload: false })
             }

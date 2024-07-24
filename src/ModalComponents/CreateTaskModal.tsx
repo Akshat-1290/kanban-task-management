@@ -27,7 +27,12 @@ const action = async ({ request }: { request: Request }) => {
       };
     });
 
-  const newTask = { id: newTaskId, title: data.title, description : data.description ,  subtasks };
+  const newTask = {
+    id: newTaskId,
+    title: data.title,
+    description: data.description,
+    subtasks,
+  };
   return { newTask: newTask, columnName: data.column };
 };
 
