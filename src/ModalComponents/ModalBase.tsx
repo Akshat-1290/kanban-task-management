@@ -11,7 +11,7 @@ export const ModalBase = ({ children }: { children: ReactNode }) => {
         className="modal-bg absolute -z-10 h-full w-full bg-black bg-opacity-20"
         onClick={() => navigate(`/boards/${boardId}`)}
       ></div>
-      <div className="modal w-[80vw] rounded-lg bg-white px-5 py-8 shadow-lg sm:w-[33rem] sm:px-8">
+      <div className="modal w-[80vw] h-fit max-h-[90vh] overflow-auto rounded-lg bg-white px-5 py-8 shadow-lg sm:w-[33rem] sm:px-8">
         {children}
       </div>
     </section>

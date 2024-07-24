@@ -28,7 +28,7 @@ export const Sidebar = () => {
     const sidebar = sidebarRef.current;
     if (sidebar) {
       if (isSmallDevice) {
-        sidebar.classList.remove("hideSidebar");
+        sidebar.classList.remove("showSidebar");
         isMobileSidebarOpen
           ? sidebar.classList.add("activeMobileSidebar")
           : sidebar.classList.remove("activeMobileSidebar");
