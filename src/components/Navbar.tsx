@@ -69,7 +69,7 @@ export const Navbar = () => {
             {boardId && (
               <div className="ml-auto flex gap-4 relative">
                 <Link
-                  to={""}
+                  to={`/boards/${boardId}/newTask`}
                   className="flex h-8 w-12 items-center justify-center rounded-full bg-purple-600 sm:h-10 sm:w-40 sm:gap-2 sm:font-bold sm:text-white"
                 >
                   <img src="/icon-add-task-mobile.svg" alt="Add Task" />

@@ -15,6 +15,7 @@ import { CreateBoardModal } from "./ModalComponents/CreateBoardModal";
 import { EditBoardModal } from "./ModalComponents/EditBoardModal";
 import { DeleteBoardModal } from "./ModalComponents/DeleteBoardModal";
 import { ViewTaskModal } from "./ModalComponents/ViewTaskModal";
+import { CreateTaskModal } from "./ModalComponents/CreateTaskModal";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,11 @@ const router = createBrowserRouter([
                 path : "/boards/:boardId/column/:columnId/tasks/:taskId/delete",
               },
             ]
+          },
+          {
+            path : "/boards/:boardId/newTask",
+            element : <CreateTaskModal/>,
+            action : CreateTaskModal.action
           }
         ],
       },

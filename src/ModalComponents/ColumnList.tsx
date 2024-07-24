@@ -29,7 +29,7 @@ export const ColumnList: FC<ColumnListProps> = ({
     <div className="task-footer mt-4">
       <p className="text-xs font-semibold text-neutral-500">Current Status</p>
       <select
-        name="columns"
+        name="column"
         id="column-select"
         className="mt-4 w-full border-2 border-blue-300 p-2"
         value={selectedColumn}
