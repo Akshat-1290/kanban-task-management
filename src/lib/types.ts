@@ -50,6 +50,14 @@ export type SubTasks = {
       };
     }
   | {
+      type: 'UPDATE_TASK';
+      payload: {
+        boardId: string;
+        columnId: string;
+        task : Tasks;
+      };
+    }
+  | {
       type: 'ADD_SUBTASK';
       payload: {
         boardId: string;

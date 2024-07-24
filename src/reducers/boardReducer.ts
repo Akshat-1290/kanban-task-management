@@ -76,6 +76,30 @@ export const reducer = (state: BoardState, action: BoardAction): BoardState => {
         ),
       };
       return newState;
+    case "UPDATE_TASK":
+      newState = {
+        ...state,
+        boards: state.boards.map((board) =>
+          board.id === action.payload.boardId
+            ? {
+                ...board,
+                columns: board.columns.map((column) =>
+                  column.id === action.payload.columnId
+                    ? {
+                        ...column,
+                        tasks: column.tasks.map((task) =>
+                          task.id === action.payload.task.id
+                            ? action.payload.task
+                            : task,
+                        ),
+                      }
+                    : column,
+                ),
+              }
+            : board,
+        ),
+      };
+      return newState;
     case "ADD_SUBTASK":
       newState = {
         ...state,
