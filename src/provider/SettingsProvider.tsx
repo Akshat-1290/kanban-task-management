@@ -19,8 +19,7 @@ export const SettingsProvider: FC<SettingsProviderProps> = ({ children }) => {
   useEffect(() => {
     const storedSidebarVal = localStorage.getItem("isSidebarOpen");
     const storedDarkModeVal = localStorage.getItem("darkMode");
-    storedSidebarVal &&
-      dispatch({ type: "SET_SIDEBAR", payload: JSON.parse(storedSidebarVal) });
+    storedSidebarVal ? dispatch({ type: "SET_SIDEBAR", payload: JSON.parse(storedSidebarVal) }) : dispatch({ type: "SET_SIDEBAR", payload: true })
     storedDarkModeVal &&
       dispatch({
         type: "SET_DARK_MODE",
@@ -30,11 +29,9 @@ export const SettingsProvider: FC<SettingsProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    state.isSidebarOpen !== null &&
-      localStorage.setItem(
-        "isSidebarOpen",
-        JSON.stringify(state.isSidebarOpen),
-      );
+    if(state.isSidebarOpen !== null){
+      localStorage.setItem("isSidebarOpen", JSON.stringify(state.isSidebarOpen));
+    }
   }, [state.isSidebarOpen]);
 
   useEffect(() => {
